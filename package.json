@@ -19,6 +19,15 @@
   ],
   "author": "rondinif",
   "license": "MIT",
+  "homepage": "https://github.com/rondinif/phytojs#readme",
+  "bugs": {
+    "url": "https://github.com/rondinif/phytojs/issues",
+    "email": "rondinif+phytojs@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rondinif/phytojs.git"
+  },
   "main": "umd/phyto.js",
   "module": "esm/index.js",
   "scripts": {
