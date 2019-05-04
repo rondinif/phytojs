@@ -1,0 +1,17 @@
+{
+    "head": {
+        "vars": [
+            "scientificname"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "scientificname": {
+                    "type": "literal",
+                    "value": "Solanum tuberosum"
+                }
+            }
+        ]
+    }
+}

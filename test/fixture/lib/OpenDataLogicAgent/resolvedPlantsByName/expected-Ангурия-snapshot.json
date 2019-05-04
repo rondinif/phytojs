@@ -1,0 +1,15 @@
+{
+    "name": "Ангурия",
+    "plants": [
+        {
+            "wdEntityId": "Q2349096",
+            "wdPageId": 2269521,
+            "wdSnippet": "species of plant",
+            "scientificName": "Cucumis anguria",
+            "taxonRankId": "http://www.wikidata.org/entity/Q7432",
+            "taxonRankLabel": "species",
+            "specieArticle": "https://species.wikimedia.org/wiki/Cucumis_anguria",
+            "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cucumis%20anguria.JPG"
+        }
+    ]
+}

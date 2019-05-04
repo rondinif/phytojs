@@ -1,0 +1,34 @@
+{
+    "name": "pomodoro",
+    "plants": [
+        {
+            "wdEntityId": "Q23501",
+            "wdPageId": 26885,
+            "wdSnippet": "species of plant",
+            "scientificName": "Solanum lycopersicum",
+            "taxonRankId": "http://www.wikidata.org/entity/Q7432",
+            "taxonRankLabel": "species",
+            "specieArticle": "https://species.wikimedia.org/wiki/Solanum_lycopersicum",
+            "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Raj%C4%8De1.jpg"
+        },
+        {
+            "wdEntityId": "Q4930177",
+            "wdPageId": 4710978,
+            "wdSnippet": "cultivar of tomato with high levels of anthocyanins in the skin or in the flesh",
+            "scientificName": "#ND",
+            "taxonRankId": "#ND",
+            "taxonRankLabel": "#ND",
+            "image": "http://commons.wikimedia.org/wiki/Special:FilePath/BlueTomato.jpg"
+        },
+        {
+            "wdEntityId": "Q6540634",
+            "wdPageId": 6361619,
+            "wdSnippet": "variety of plants",
+            "scientificName": "Solanum lycopersicum var. cerasiforme",
+            "taxonRankId": "http://www.wikidata.org/entity/Q767728",
+            "taxonRankLabel": "variety",
+            "specieArticle": "https://species.wikimedia.org/wiki/Solanum_lycopersicum_var._cerasiforme",
+            "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cherry-Tomatoes-in-Pack.jpg"
+        }
+    ]
+}

@@ -1,3 +1,10 @@
+_private
+_config
+
+# local .env* files
+.env.local
+.env.*.local
+
 # Logs
 logs
 *.log
