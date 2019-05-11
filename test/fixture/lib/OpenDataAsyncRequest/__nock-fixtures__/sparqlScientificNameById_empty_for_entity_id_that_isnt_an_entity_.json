@@ -10,7 +10,7 @@
         ],
         "rawHeaders": [
             "Date",
-            "Tue, 16 Apr 2019 02:00:58 GMT",
+            "Thu, 09 May 2019 20:07:55 GMT",
             "Content-Type",
             "application/sparql-results+json;charset=utf-8",
             "Content-Length",
@@ -30,7 +30,7 @@
             "Vary",
             "Accept, Accept-Encoding",
             "X-Varnish",
-            "835429269, 5968810, 819570188",
+            "1002685606, 303963824, 171456135",
             "Via",
             "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
             "Accept-Ranges",
@@ -46,13 +46,13 @@
             "Strict-Transport-Security",
             "max-age=106384710; includeSubDomains; preload",
             "Set-Cookie",
-            "WMF-Last-Access=16-Apr-2019;Path=/;HttpOnly;secure;Expires=Sat, 18 May 2019 00:00:00 GMT",
+            "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
             "Set-Cookie",
-            "WMF-Last-Access-Global=16-Apr-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Sat, 18 May 2019 00:00:00 GMT",
+            "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
             "X-Analytics",
             "https=1;nocookies=1",
             "X-Client-IP",
-            "146.241.122.176"
+            "146.241.64.248"
         ]
     }
 ]

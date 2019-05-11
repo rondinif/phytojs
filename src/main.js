@@ -18,8 +18,8 @@ export class Phyto {
     * @param {Function} logger
     */
     constructor(fetch, config, log) {
-      const _ff = makeGetPromiseOfWikiDataApiResults(fetch);
-      const _ffSparql = makeGetPromiseOfSparqlResults(fetch);
+      const _ff = makeGetPromiseOfWikiDataApiResults(fetch, log);
+      const _ffSparql = makeGetPromiseOfSparqlResults(fetch, log);
       
       this._wdSearchByAnyName = openDataPromisesFactories.makeWdSearchByAnyName(_ff, config, log);
       this._wdPlantsByAnyName = openDataPromisesFactories.makeWdPlantsByAnyName(_ff, config, log);

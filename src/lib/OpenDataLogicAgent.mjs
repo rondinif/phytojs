@@ -21,11 +21,12 @@ export const openDataPromisesFactories = {
 /* wdSearchByAnyName:
 dato un nome generico nome di pianta espresso in qualsiasi lingua
 ritorna una lista di `wikidata entities`
+[1.0.1 BUG FIX]: added `origin=*`
 */
 function getPromiseOfWikiDataApiActionQuerySearchByName({ ff, config, log }, name) {
   name = (name === undefined) ? "" : name;
   const serviceUri = config.isUnderTest() ? 'http://127.0.0.1:6568' : 'https://www.wikidata.org';
-  const uri = `${serviceUri}/w/api.php?action=query&format=json&list=search&srsearch=${name}&srlimit=500`
+  const uri = `${serviceUri}/w/api.php?action=query&format=json&origin=*&list=search&srsearch=${name}&srlimit=500`;
   log.trace(uri);
   const headers = { 'Accept': 'application/json' };
   // ritorna la promise ottenta dal modulo di gestione delle richieste http asincone verso opendata

@@ -7,15 +7,25 @@
   // DIP: export Higher-order function factories : each of them returns a function as its result.
 
   // Higher-order function: returns a function as its result.
-  function makeGetPromiseOfWikiDataApiResults(fetch) { return (uri, headers) => {
-      return fetch(encodeURI(uri), { headers }).then(body => body.json());
-  }; }
+  function makeGetPromiseOfWikiDataApiResults(fetch, log) {
+    return (uri, headers) => {
+      return fetch(encodeURI(uri), {
+        headers: headers // ,
+        // method: 'GET', ...mode, cache , see 
+      }).then(body => body.json())
+        .catch(err => log.error(`ERROR FETCHING DATA: ${err.message}`));
+    };
+  }
 
   // Higher-order function: returns a function as its result.
-  function makeGetPromiseOfSparqlResults(fetch) { return (serviceUri, sparql, headers) => {
-    const uri = `${serviceUri}/sparql?query=${sparql}`;
-    return fetch(encodeURI(uri), { headers }).then(body => body.json());
-  }; }
+  function makeGetPromiseOfSparqlResults(fetch, log) {
+    return (serviceUri, sparql, headers) => {
+      const uri = `${serviceUri}/sparql?query=${sparql}`;
+      return fetch(encodeURI(uri), { headers })
+        .then(body => body.json())
+        .catch(err => log.error(`ERROR FETCHING DATA: ${err.message}`));
+    };
+  }
 
   const openDataPromisesFactories = {
     makeWdSearchByAnyName: (ff, config, log) => name => {
@@ -39,11 +49,12 @@
   /* wdSearchByAnyName:
   dato un nome generico nome di pianta espresso in qualsiasi lingua
   ritorna una lista di `wikidata entities`
+  [1.0.1 BUG FIX]: added `origin=*`
   */
   function getPromiseOfWikiDataApiActionQuerySearchByName({ ff, config, log }, name) {
     name = (name === undefined) ? "" : name;
     const serviceUri = config.isUnderTest() ? 'http://127.0.0.1:6568' : 'https://www.wikidata.org';
-    const uri = `${serviceUri}/w/api.php?action=query&format=json&list=search&srsearch=${name}&srlimit=500`;
+    const uri = `${serviceUri}/w/api.php?action=query&format=json&origin=*&list=search&srsearch=${name}&srlimit=500`;
     log.trace(uri);
     const headers = { 'Accept': 'application/json' };
     // ritorna la promise ottenta dal modulo di gestione delle richieste http asincone verso opendata
@@ -250,8 +261,8 @@
       * @param {Function} logger
       */
       constructor(fetch, config, log) {
-        const _ff = makeGetPromiseOfWikiDataApiResults(fetch);
-        const _ffSparql = makeGetPromiseOfSparqlResults(fetch);
+        const _ff = makeGetPromiseOfWikiDataApiResults(fetch, log);
+        const _ffSparql = makeGetPromiseOfSparqlResults(fetch, log);
         
         this._wdSearchByAnyName = openDataPromisesFactories.makeWdSearchByAnyName(_ff, config, log);
         this._wdPlantsByAnyName = openDataPromisesFactories.makeWdPlantsByAnyName(_ff, config, log);
