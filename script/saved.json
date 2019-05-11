@@ -1,0 +1,1228 @@
+{
+  "imposters": [
+    {
+      "protocol": "http",
+      "port": 6568,
+      "name": "wikidata",
+      "stubs": [
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/w/api.php"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "action": "query",
+                  "format": "json",
+                  "origin": "*",
+                  "list": "search",
+                  "srsearch": "anguria",
+                  "srlimit": "500"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:00:54 GMT",
+                  "Content-Type": "application/json; charset=utf-8",
+                  "Content-Length": 660,
+                  "Connection": "close",
+                  "Server": "mw1297.eqiad.wmnet",
+                  "X-Search-ID": "thtxnsc0tr6ne4byzkpop7vl",
+                  "Access-Control-Allow-Credentials": "false",
+                  "P3P": "CP=\"This is not a P3P policy! See https://www.wikidata.org/wiki/Special:CentralAutoLogin/P3P for more info.\"",
+                  "Content-Disposition": "inline; filename=api-result.json",
+                  "X-Frame-Options": "DENY",
+                  "MediaWiki-Login-Suppressed": "true",
+                  "Access-Control-Allow-Origin": "*",
+                  "X-Powered-By": "HHVM/3.18.6-dev",
+                  "Access-Control-Expose-Headers": "MediaWiki-API-Error, Retry-After, X-Database-Lag, MediaWiki-Login-Suppressed",
+                  "Cache-control": "private, must-revalidate, max-age=0",
+                  "X-Content-Type-Options": "nosniff",
+                  "Backend-Timing": "D=163123 t=1557432054375461",
+                  "Vary": "Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie,Authorization,X-Seven",
+                  "Content-Encoding": "gzip",
+                  "X-Varnish": "691106610, 926853829, 152911053",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Accept-Ranges": "bytes",
+                  "Age": "0",
+                  "X-Cache": "cp1085 pass, cp3033 pass, cp3030 pass",
+                  "X-Cache-Status": "pass",
+                  "Server-Timing": "cache;desc=\"pass\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "GeoIP=IT:::43.15:12.11:v4; Path=/; secure; Domain=.wikidata.org"
+                  ],
+                  "X-Analytics": "ns=-1;special=Badtitle;https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248"
+                },
+                "body": "H4sIAAAAAAAAA72WS4vbMBSF/4rQqoUMXF29s+yi0MIsSgcKfSwUR0lEHdmV5Q7pkP9euS2tQwpjnMnsnMiSPp9zda4e6Mrlalc1+7b22dMlpQv6rffpQJcPtPMuVbsQN83wKzfZ1buQO7pEPC7+jNLlpwcay3+woDnkeljjHTJuAJQti7Vu68O6TOECFRpZ5oUf5aXY1/WC3jdpXTV9zL/mdzG0rS/P9LtLwecDaTakrV0ZHhbf+y67fVuGEZi9AXkD9g5hCbCU4iM9Lv4DwoUFq8YcqKxENg2ja30VfHcxhpSmCCLMiENKbYWVzwzy2xiN58aY5zVGWoNCARsrYjUDMGIayIcmfR0o8s6TV8l1oQ4uOvKmamKzTZ97AM82oXKkauraVzk0kbzAYQa+vAhaWnsOjVeDvlBgOGflVxSYXSYwN0rIEbFgbOpRrV3aerJJfcjkPuQdcaTbN0152Lm0JinE9VwqxhH52HTGBciJdbr1sf93brvZB1cYBDQnSaa04cgnJupsSxTTAsdfz4WQ3OJ1tx0SEzXiaWIaW1LzuhszLUGzkw9mpYVImNq6niqqOWPsJB/RWo7mmRuX0qWNMz62QSmhSlFc1wYNCDB2XymQGqZtWqZKsgn1nqwO5K5zgdyGuL0ZAmw7F0gww5VAPU4nzoRioCZaUgyJOZTIJC7lUNWetP2qDt3Or0nJzrd99KTgwOyC0WiNPQmqkqda6qlePUb43rfZ71c+DZh8tpCamQFqLKQpMQbyiYRE81dLnK1lqXKJatw9eTkJMPkC+xjk7XB3HhDFbERR7m0Kxh2By9I/LbNzEWdbqkowC8VPLB2ucvAUlRciee1XqXfpMAjGJlF+OR5/AmvfynfcDAAA",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/w/api.php"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "action": "query",
+                  "format": "json",
+                  "origin": "*",
+                  "list": "search",
+                  "srsearch": "bietola da coste",
+                  "srlimit": "500"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:00:55 GMT",
+                  "Content-Type": "application/json; charset=utf-8",
+                  "Content-Length": 83,
+                  "Connection": "close",
+                  "Server": "mw1282.eqiad.wmnet",
+                  "X-Search-ID": "7q8ogo81l01ztoacm29yupupd",
+                  "Access-Control-Allow-Credentials": "false",
+                  "P3P": "CP=\"This is not a P3P policy! See https://www.wikidata.org/wiki/Special:CentralAutoLogin/P3P for more info.\"",
+                  "Content-Disposition": "inline; filename=api-result.json",
+                  "X-Frame-Options": "DENY",
+                  "MediaWiki-Login-Suppressed": "true",
+                  "Access-Control-Allow-Origin": "*",
+                  "X-Powered-By": "HHVM/3.18.6-dev",
+                  "Access-Control-Expose-Headers": "MediaWiki-API-Error, Retry-After, X-Database-Lag, MediaWiki-Login-Suppressed",
+                  "Cache-control": "private, must-revalidate, max-age=0",
+                  "X-Content-Type-Options": "nosniff",
+                  "Backend-Timing": "D=176061 t=1557432055291175",
+                  "Vary": "Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie,Authorization,X-Seven",
+                  "Content-Encoding": "gzip",
+                  "X-Varnish": "890292081, 8488931, 149677265",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Accept-Ranges": "bytes",
+                  "Age": "0",
+                  "X-Cache": "cp1077 pass, cp3040 pass, cp3030 pass",
+                  "X-Cache-Status": "pass",
+                  "Server-Timing": "cache;desc=\"pass\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "GeoIP=IT:::43.15:12.11:v4; Path=/; secure; Domain=.wikidata.org"
+                  ],
+                  "X-Analytics": "ns=-1;special=Badtitle;https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248"
+                },
+                "body": "H4sIAAAAAAAAA6tWSkosSc5Izs8tyEktSVWyUlLSUSosTS2qVLKqVipOTSxKzsjMS8sH8UrySxJzMjJLipWsDGp1oJJKVtGxtbUAeN6cqEcAAAA=",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/w/api.php"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "action": "query",
+                  "format": "json",
+                  "origin": "*",
+                  "list": "search",
+                  "srsearch": "Ангурия",
+                  "srlimit": "500"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:00:56 GMT",
+                  "Content-Type": "application/json; charset=utf-8",
+                  "Content-Length": 179,
+                  "Connection": "close",
+                  "Server": "mw1221.eqiad.wmnet",
+                  "X-Search-ID": "14jqzsx6vvyhqqvfnjhki439q",
+                  "Access-Control-Allow-Credentials": "false",
+                  "P3P": "CP=\"This is not a P3P policy! See https://www.wikidata.org/wiki/Special:CentralAutoLogin/P3P for more info.\"",
+                  "Content-Disposition": "inline; filename=api-result.json",
+                  "X-Frame-Options": "DENY",
+                  "MediaWiki-Login-Suppressed": "true",
+                  "Access-Control-Allow-Origin": "*",
+                  "X-Powered-By": "HHVM/3.18.6-dev",
+                  "Access-Control-Expose-Headers": "MediaWiki-API-Error, Retry-After, X-Database-Lag, MediaWiki-Login-Suppressed",
+                  "Cache-control": "private, must-revalidate, max-age=0",
+                  "X-Content-Type-Options": "nosniff",
+                  "Backend-Timing": "D=129586 t=1557432056070315",
+                  "Vary": "Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie,Authorization,X-Seven",
+                  "Content-Encoding": "gzip",
+                  "X-Varnish": "576095967, 385225193, 156850915",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Accept-Ranges": "bytes",
+                  "Age": "0",
+                  "X-Cache": "cp1081 pass, cp3030 pass, cp3030 pass",
+                  "X-Cache-Status": "pass",
+                  "Server-Timing": "cache;desc=\"pass\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "GeoIP=IT:::43.15:12.11:v4; Path=/; secure; Domain=.wikidata.org"
+                  ],
+                  "X-Analytics": "ns=-1;special=Badtitle;https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248"
+                },
+                "body": "H4sIAAAAAAAAAy2MQQrCMBBFr1Jm3cI02kJyC8GV4iKmUxtIk9hMES25u6m4+/Pf/LfBXbOZTJijIyZQADU8V1reoDZIpBczWT+G/eLA2k2WE6g2138I6rqBLxXWwJbdrjiJw1Gi7Isq6gfZAZQQvexEW1b2U1786lwNr7AMJqyef+vkbYxUMqRIxlKqwlhFpwve1TMl1nMsWGArG+walGeBClF1/QXyLecvzCeyQc0AAAA=",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/w/api.php"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "action": "query",
+                  "format": "json",
+                  "origin": "*",
+                  "list": "search",
+                  "srsearch": "Surinaamse wilde augurk",
+                  "srlimit": "500"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:00:56 GMT",
+                  "Content-Type": "application/json; charset=utf-8",
+                  "Content-Length": 179,
+                  "Connection": "close",
+                  "Server": "mw1228.eqiad.wmnet",
+                  "X-Search-ID": "est7lub90ebrgu8xbrn4sxape",
+                  "Access-Control-Allow-Credentials": "false",
+                  "P3P": "CP=\"This is not a P3P policy! See https://www.wikidata.org/wiki/Special:CentralAutoLogin/P3P for more info.\"",
+                  "Content-Disposition": "inline; filename=api-result.json",
+                  "X-Frame-Options": "DENY",
+                  "MediaWiki-Login-Suppressed": "true",
+                  "Access-Control-Allow-Origin": "*",
+                  "X-Powered-By": "HHVM/3.18.6-dev",
+                  "Access-Control-Expose-Headers": "MediaWiki-API-Error, Retry-After, X-Database-Lag, MediaWiki-Login-Suppressed",
+                  "Cache-control": "private, must-revalidate, max-age=0",
+                  "X-Content-Type-Options": "nosniff",
+                  "Backend-Timing": "D=90484 t=1557432056710142",
+                  "Vary": "Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie,Authorization,X-Seven",
+                  "Content-Encoding": "gzip",
+                  "X-Varnish": "914692425, 55127393, 145586990",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Accept-Ranges": "bytes",
+                  "Age": "0",
+                  "X-Cache": "cp1077 pass, cp3032 pass, cp3030 pass",
+                  "X-Cache-Status": "pass",
+                  "Server-Timing": "cache;desc=\"pass\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "GeoIP=IT:::43.15:12.11:v4; Path=/; secure; Domain=.wikidata.org"
+                  ],
+                  "X-Analytics": "ns=-1;special=Badtitle;https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248"
+                },
+                "body": "H4sIAAAAAAAAAy2MQQrCMBBFr1Jm3cI02kJyC8GV4iKmUxtIk9hMES25u6m4+/Pf/LfBXbOZTJijIyZQADU8V1reoDZIpBczWT+G/eLA2k2WE6g2138I6rqBLxXWwJbdrjiJw1Gi7Isq6gfZAZQQvexEW1b2U1786lwNr7AMJqyef+vkbYxUMqRIxlKqwlhFpwve1TMl1nMsWGArG+walGeBClF1/QXyLecvzCeyQc0AAAA=",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/w/api.php"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "action": "query",
+                  "format": "json",
+                  "origin": "*",
+                  "list": "search",
+                  "srsearch": "pomodoro",
+                  "srlimit": "500"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:00:57 GMT",
+                  "Content-Type": "application/json; charset=utf-8",
+                  "Transfer-Encoding": "chunked",
+                  "Connection": "close",
+                  "Server": "mw1281.eqiad.wmnet",
+                  "X-Search-ID": "2z3w1jxikwcre6lcvlg98curh",
+                  "Access-Control-Allow-Credentials": "false",
+                  "P3P": "CP=\"This is not a P3P policy! See https://www.wikidata.org/wiki/Special:CentralAutoLogin/P3P for more info.\"",
+                  "Content-Disposition": "inline; filename=api-result.json",
+                  "X-Frame-Options": "DENY",
+                  "MediaWiki-Login-Suppressed": "true",
+                  "Access-Control-Allow-Origin": "*",
+                  "X-Powered-By": "HHVM/3.18.6-dev",
+                  "Access-Control-Expose-Headers": "MediaWiki-API-Error, Retry-After, X-Database-Lag, MediaWiki-Login-Suppressed",
+                  "Cache-control": "private, must-revalidate, max-age=0",
+                  "X-Content-Type-Options": "nosniff",
+                  "Backend-Timing": "D=181552 t=1557432057442442",
+                  "Vary": "Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie,Authorization,X-Seven",
+                  "Content-Encoding": "gzip",
+                  "X-Varnish": "885013109, 389223073, 154682037",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Accept-Ranges": "bytes",
+                  "Age": "0",
+                  "X-Cache": "cp1077 pass, cp3030 pass, cp3030 pass",
+                  "X-Cache-Status": "pass",
+                  "Server-Timing": "cache;desc=\"pass\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "GeoIP=IT:::43.15:12.11:v4; Path=/; secure; Domain=.wikidata.org"
+                  ],
+                  "X-Analytics": "ns=-1;special=Badtitle;https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248"
+                },
+                "body": "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",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/w/api.php"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "action": "query",
+                  "format": "json",
+                  "origin": "*",
+                  "list": "search",
+                  "srsearch": "",
+                  "srlimit": "500"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:07:54 GMT",
+                  "Content-Type": "application/json; charset=utf-8",
+                  "Content-Length": 249,
+                  "Connection": "close",
+                  "Server": "mw1225.eqiad.wmnet",
+                  "MediaWiki-API-Error": "nosrsearch",
+                  "Access-Control-Allow-Origin": "*",
+                  "X-Powered-By": "HHVM/3.18.6-dev",
+                  "Access-Control-Expose-Headers": "MediaWiki-API-Error, Retry-After, X-Database-Lag, MediaWiki-Login-Suppressed",
+                  "X-Frame-Options": "DENY",
+                  "MediaWiki-Login-Suppressed": "true",
+                  "P3P": "CP=\"This is not a P3P policy! See https://www.wikidata.org/wiki/Special:CentralAutoLogin/P3P for more info.\"",
+                  "Content-Disposition": "inline; filename=api-result.json",
+                  "Cache-control": "private, must-revalidate, max-age=0",
+                  "X-Content-Type-Options": "nosniff",
+                  "Access-Control-Allow-Credentials": "false",
+                  "Backend-Timing": "D=58121 t=1557432474505633",
+                  "Vary": "Accept-Encoding,X-Seven",
+                  "Content-Encoding": "gzip",
+                  "X-Varnish": "138659484, 776961361, 199340547",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Accept-Ranges": "bytes",
+                  "Age": "0",
+                  "X-Cache": "cp1079 pass, cp3042 pass, cp3030 pass",
+                  "X-Cache-Status": "pass",
+                  "Server-Timing": "cache;desc=\"pass\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "GeoIP=IT:::43.15:12.11:v4; Path=/; secure; Domain=.wikidata.org"
+                  ],
+                  "X-Analytics": "https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248"
+                },
+                "body": "H4sIAAAAAAAAA22PsW7DMAxEf4XgkKFIZDRAl2Tq2C1AOmahJdoWYksCRVcogvx7ZQHZuh559+4eyCJR8PRAGx3jCUPMkpnETrhHH4ZYte+J4YYv/YaQSGhhZYFlzQo9Q2Y11fBWv6/MMKmmfOq6Uoop/u4dKZkoY1c6St6kKcEQBT4vX7BmGtnAde2zFV+jNIJW4MLO0+Y9VMeBQohrsFUmP/swwuwrmBR2s55ftE3LjdfMDbj9LxTabZvT/Z+7G/XcKoWovmLi0Mo5TsKW1MeQgYKDXpjuG99OFEbOBp97zCw/7PrfOn4p78fjBz7/ACRBZcZZAQAA",
+                "_mode": "binary"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "protocol": "http",
+      "port": 6569,
+      "name": "wikidata-sparql",
+      "stubs": [
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/sparql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "query": "SELECT ?scientificname ?taxonrank ?taxonrankLabel ?image WHERE {\n      OPTIONAL { wd:Q23501 wdt:P225 ?scientificname. }\n      OPTIONAL { wd:Q23501 wdt:P105 ?taxonrank.}\n      OPTIONAL { wd:Q23501 wdt:P18 ?image. }\n      SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\" }\n    }"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:00:59 GMT",
+                  "Content-Type": "application/sparql-results+json;charset=utf-8",
+                  "Content-Length": 286,
+                  "Connection": "close",
+                  "Server": "nginx/1.13.6",
+                  "X-Served-By": "wdqs1005",
+                  "Access-Control-Allow-Origin": "*",
+                  "Cache-Control": "public, max-age=300",
+                  "Content-Encoding": "gzip",
+                  "Vary": "Accept, Accept-Encoding",
+                  "X-Varnish": "110166210, 907242247, 139165332",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Age": "0",
+                  "X-Cache": "cp1079 pass, cp3033 miss, cp3030 miss",
+                  "X-Cache-Status": "miss",
+                  "Server-Timing": "cache;desc=\"miss\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT"
+                  ],
+                  "X-Analytics": "https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248",
+                  "Accept-Ranges": "bytes"
+                },
+                "body": "H4sIAAAAAAAAA52STU/DMAyG7/sVUaTdpkbAJFCvIE4cgB0RBy81rbd8VEm6rpr632naMjoNJsQpem3Hz2snhxljvEDIOEvZoROd3IHzUb4x7iWhCfRB0oBGvmA8wN4aB2Z7Ip5gjSpGSEOOnL13ndpF7O3QVyr4Sfs1mYxMPiKGIDtDHev7ZGjKPsQVBXTQob5zO1DVkFxZBabSTDXSlug8yUrzsbD9ujGZ4BdG5ejn/kUIZSpEXddJTVvKIEBiXS6i79CIl9vlzfU5b1zJ/1jSam2N73kaMxqAUYlViZJApY+k8BlCIV5hM79fzu8e8CrZlPmFyYfnOrW01yrt1pf3dDRTV3/bvo9+0B+x/dkOX2HWfgIDfXH4aQIAAA==",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/sparql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "query": "SELECT ?article WHERE { ?article schema:about wd:Q23501; schema:isPartOf <https://species.wikimedia.org/>. }"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:00:59 GMT",
+                  "Content-Type": "application/sparql-results+json;charset=utf-8",
+                  "Content-Length": 160,
+                  "Connection": "close",
+                  "Server": "nginx/1.13.6",
+                  "X-Served-By": "wdqs1004",
+                  "Access-Control-Allow-Origin": "*",
+                  "Cache-Control": "public, max-age=300",
+                  "Content-Encoding": "gzip",
+                  "Vary": "Accept, Accept-Encoding",
+                  "X-Varnish": "885771056, 258065135, 154460103",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Accept-Ranges": "bytes",
+                  "Age": "0",
+                  "X-Cache": "cp1077 pass, cp3041 miss, cp3030 pass",
+                  "X-Cache-Status": "miss",
+                  "Server-Timing": "cache;desc=\"miss\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT"
+                  ],
+                  "X-Analytics": "https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248"
+                },
+                "body": "H4sIAAAAAAAAA02OwQqDMAyG7z5FyFns3dfYcYzR1aBhVUvTOkT67qtWNk/h+/4/IVsFgAPpDqGFLUPGRXvZ8Q6ofWBjCeGRo1TvZU8SbZBL/8VTx1N/7hQJl93257INqzsURs9Y//2ibSzBEIKTVilxZJik+fCbR+pYN7Pv1U7qNls9xfFpVzM78sImjnjeSsdM5eMqfQFk1vyp4QAAAA==",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/sparql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "query": "SELECT ?scientificname ?taxonrank ?taxonrankLabel ?image WHERE {\n      OPTIONAL { wd:Q4930177 wdt:P225 ?scientificname. }\n      OPTIONAL { wd:Q4930177 wdt:P105 ?taxonrank.}\n      OPTIONAL { wd:Q4930177 wdt:P18 ?image. }\n      SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\" }\n    }"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:01:00 GMT",
+                  "Content-Type": "application/sparql-results+json;charset=utf-8",
+                  "Content-Length": 195,
+                  "Connection": "close",
+                  "Server": "nginx/1.13.6",
+                  "X-Served-By": "wdqs1004",
+                  "Access-Control-Allow-Origin": "*",
+                  "Cache-Control": "public, max-age=300",
+                  "Content-Encoding": "gzip",
+                  "Vary": "Accept, Accept-Encoding",
+                  "X-Varnish": "728148595, 372270562, 173410745",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Accept-Ranges": "bytes",
+                  "Age": "0",
+                  "X-Cache": "cp1085 pass, cp3030 miss, cp3030 pass",
+                  "X-Cache-Status": "miss",
+                  "Server-Timing": "cache;desc=\"miss\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT"
+                  ],
+                  "X-Analytics": "https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248"
+                },
+                "body": "H4sIAAAAAAAAA1WOuw6CQBBFe79iMzVhe0oLKwsT7YzFACOM7IPsLqgh/LvLI6jV5JzJvTPDTgioCUsQmRgiROzR+QmvAnzBZALfuTCoCRIBAV/WODTNHxwxJzUZ1lgRiFtsGpOp25HvVPA/9Tmbkk21nlik2JLZZqIL73ZW0DmG5Ot7VN2yqENoMykLq7U1Pn1yw5pKxtS6Sk4kzy0VjCo7sKIThlruY/ZiNQabPtoK1tZxnuPy+W78AL+hFY4YAQAA",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/sparql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "query": "SELECT ?article WHERE { ?article schema:about wd:Q4930177; schema:isPartOf <https://species.wikimedia.org/>. }"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:01:00 GMT",
+                  "Content-Type": "application/sparql-results+json;charset=utf-8",
+                  "Content-Length": 84,
+                  "Connection": "close",
+                  "Server": "nginx/1.13.6",
+                  "X-Served-By": "wdqs1004",
+                  "Access-Control-Allow-Origin": "*",
+                  "Cache-Control": "public, max-age=300",
+                  "Content-Encoding": "gzip",
+                  "Vary": "Accept, Accept-Encoding",
+                  "X-Varnish": "900748110, 391422038, 154460187",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Age": "0",
+                  "X-Cache": "cp1083 pass, cp3030 miss, cp3030 miss",
+                  "X-Cache-Status": "miss",
+                  "Server-Timing": "cache;desc=\"miss\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT"
+                  ],
+                  "X-Analytics": "https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248",
+                  "Accept-Ranges": "bytes"
+                },
+                "body": "H4sIAAAAAAAAA6vmUlBQykhNTFFSsFKoBnKA3LLEomIQN1pBKbGoJDM5J1VJIRYoVasDUlyUWlyaU1KMpD4pMy8lMy8dqgeskqsWABFrfJhZAAAA",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/sparql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "query": "SELECT ?scientificname ?taxonrank ?taxonrankLabel ?image WHERE {\n      OPTIONAL { wd:Q6540634 wdt:P225 ?scientificname. }\n      OPTIONAL { wd:Q6540634 wdt:P105 ?taxonrank.}\n      OPTIONAL { wd:Q6540634 wdt:P18 ?image. }\n      SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\" }\n    }"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:01:01 GMT",
+                  "Content-Type": "application/sparql-results+json;charset=utf-8",
+                  "Content-Length": 360,
+                  "Connection": "close",
+                  "Server": "nginx/1.13.6",
+                  "X-Served-By": "wdqs1004",
+                  "Access-Control-Allow-Origin": "*",
+                  "Cache-Control": "public, max-age=300",
+                  "Content-Encoding": "gzip",
+                  "Vary": "Accept, Accept-Encoding",
+                  "X-Varnish": "465114961, 70718434, 173608675",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Accept-Ranges": "bytes",
+                  "Age": "0",
+                  "X-Cache": "cp1075 pass, cp3032 miss, cp3030 pass",
+                  "X-Cache-Status": "miss",
+                  "Server-Timing": "cache;desc=\"miss\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT"
+                  ],
+                  "X-Analytics": "https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248"
+                },
+                "body": "H4sIAAAAAAAAA+1VTUvDQBC991csAW9tIj1YyVVQkB4qFS/iYbqdJmP3I+xumobS/+4kqbWlKuJBBL2EfTPZ9+bjkWx6QkQ5wjwSqdgwYLgC5xv4KCIvCU2gBUkDGqO+iAKsrXFglkdgDDNUTYQ0ZBiJJ2ba9htuh75UwR/Qz8jMyWQ7iS4oTqT277fJUBdtKFIU0AFLveVWoMouObUKTKmFqqUt0HmSDLibWEi+5GlhHTPvbm5fKQ5a+kC0dPS+YB5CkSZJVVVxRUuaQ4DYuixpGgl1cje6GI2Gl6eKuyl9T01ara3xraLGOXWSDUqmBUoClV6TwgmEPLnK0bl6cG81BIt+QGYwAbmMn4vskzl02zwub61VytPN2krQHFb4teXwHghDvZftdeL/BvgBA5wNzzsL8MEafjyQwfh2cvNvgr9ggnb36HnvPAHy7WlcytYHbIrS/Z7vQffn6G1fAIknosCYBgAA",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/sparql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "query": "SELECT ?article WHERE { ?article schema:about wd:Q6540634; schema:isPartOf <https://species.wikimedia.org/>. }"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:01:02 GMT",
+                  "Content-Type": "application/sparql-results+json;charset=utf-8",
+                  "Content-Length": 171,
+                  "Connection": "close",
+                  "Server": "nginx/1.13.6",
+                  "X-Served-By": "wdqs1005",
+                  "Access-Control-Allow-Origin": "*",
+                  "Cache-Control": "public, max-age=300",
+                  "Content-Encoding": "gzip",
+                  "Vary": "Accept, Accept-Encoding",
+                  "X-Varnish": "563580544, 378059950, 143359227",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Accept-Ranges": "bytes",
+                  "Age": "0",
+                  "X-Cache": "cp1081 pass, cp3030 miss, cp3030 pass",
+                  "X-Cache-Status": "miss",
+                  "Server-Timing": "cache;desc=\"miss\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT"
+                  ],
+                  "X-Analytics": "https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248"
+                },
+                "body": "H4sIAAAAAAAAA02PzwqDMAyH7z5F6Vnau6+x4xjS1UzDqi1J6xDpu6/+YfMUvi+/hGSthJADmE6KRqwFCs6GeMO7kIYiWgdSPEor11uYgJOLfMk/cepw6s+ZQ4rLbPNzxcYl7EomQln//WxcOhpDjIEbrTmARWD1wTeO0KFRnnq9kb55Z6Y0tm6xPgAx2gLlbNVaIMP48jSCPJfnvebjhSp/Act0L9fyAAAA",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/sparql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "query": "SELECT ?scientificname ?taxonrank ?taxonrankLabel ?image WHERE {\n      OPTIONAL { wd:Q2349096 wdt:P225 ?scientificname. }\n      OPTIONAL { wd:Q2349096 wdt:P105 ?taxonrank.}\n      OPTIONAL { wd:Q2349096 wdt:P18 ?image. }\n      SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\" }\n    }"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:01:02 GMT",
+                  "Content-Type": "application/sparql-results+json;charset=utf-8",
+                  "Content-Length": 280,
+                  "Connection": "close",
+                  "Server": "nginx/1.13.6",
+                  "X-Served-By": "wdqs1004",
+                  "Access-Control-Allow-Origin": "*",
+                  "Cache-Control": "public, max-age=300",
+                  "Content-Encoding": "gzip",
+                  "Vary": "Accept, Accept-Encoding",
+                  "X-Varnish": "557454443, 910029843, 145587214",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Accept-Ranges": "bytes",
+                  "Age": "0",
+                  "X-Cache": "cp1081 pass, cp3033 miss, cp3030 pass",
+                  "X-Cache-Status": "miss",
+                  "Server-Timing": "cache;desc=\"miss\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT"
+                  ],
+                  "X-Analytics": "https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248"
+                },
+                "body": "H4sIAAAAAAAAA52SMWvDMBCF9/wKIcgWrJIWCl4LLZQOCR1Lh4t9tY9IspHkOCH4v1ey1NQhbSmZzLs7ve+d5OOMMV4jlJzl7OiFlzswNsg3xm1BqB19UKFBIV8w7mDfaAN6eyZeYIMyVEhBhZy9e6dhEbwN2k46O7HfkC5JVwkRi+wCdZofm+7QjiUuyaEBj/ru7UB2sfnQFZ0iy0BXnSHgaWb4Gp6E/8XeH/vZunauzYXo+z7raUslOMgaU4kQ2R3E+v7udnnJS7dxHatolGq0HXkKS4rAoMRriwWBzB9J4gpcLdLm8+VN2j17Xj39sX98r/NgeyVz6Y+PGVBPs/3v+m1IhfaEHb9D/Bdmwye6d1S9agIAAA==",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/sparql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "query": "SELECT ?article WHERE { ?article schema:about wd:Q2349096; schema:isPartOf <https://species.wikimedia.org/>. }"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:01:03 GMT",
+                  "Content-Type": "application/sparql-results+json;charset=utf-8",
+                  "Content-Length": 156,
+                  "Connection": "close",
+                  "Server": "nginx/1.13.6",
+                  "X-Served-By": "wdqs1004",
+                  "Access-Control-Allow-Origin": "*",
+                  "Cache-Control": "public, max-age=300",
+                  "Content-Encoding": "gzip",
+                  "Vary": "Accept, Accept-Encoding",
+                  "X-Varnish": "883531251, 257148349, 159953199",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Age": "0",
+                  "X-Cache": "cp1077 pass, cp3041 miss, cp3030 miss",
+                  "X-Cache-Status": "miss",
+                  "Server-Timing": "cache;desc=\"miss\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT"
+                  ],
+                  "X-Analytics": "https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248",
+                  "Accept-Ranges": "bytes"
+                },
+                "body": "H4sIAAAAAAAAA02OTQqDMBCF955imLWYfbY9RillmoQ4VK1kEkuR3L2JSutqeN/7YdYGAHtHFkHDWkSRCwWp8gpIIbIZHMKtWLmt4eAkDVFO+QdPlid/dHYIp67+sULjZ94QpsDY/vlCQ9qNPsZZtFIyO8NOujc/eXSWqXsFr6pSl2TSyHKnyZcZwmMmbzfvzzb5C4OxdofcAAAA",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/sparql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "query": "SELECT ?scientificname WHERE {wd:Q10998 wdt:P225 ?scientificname.}"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:01:04 GMT",
+                  "Content-Type": "application/sparql-results+json;charset=utf-8",
+                  "Content-Length": 143,
+                  "Connection": "close",
+                  "Server": "nginx/1.13.6",
+                  "X-Served-By": "wdqs1006",
+                  "Access-Control-Allow-Origin": "*",
+                  "Cache-Control": "public, max-age=300",
+                  "Content-Encoding": "gzip",
+                  "Vary": "Accept, Accept-Encoding",
+                  "X-Varnish": "921442521, 46814120, 139165507",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Age": "0",
+                  "X-Cache": "cp1083 pass, cp3032 miss, cp3030 miss",
+                  "X-Cache-Status": "miss",
+                  "Server-Timing": "cache;desc=\"miss\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT"
+                  ],
+                  "X-Analytics": "https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248",
+                  "Accept-Ranges": "bytes"
+                },
+                "body": "H4sIAAAAAAAAA2WOzQqDQAyE7z5FyNkn8DV6LD1ETWsgG8v+CEX23bu6UoWewsw3E2ZtAHBiGhE6WIsociEfNnkHDIOwRXnKYOQY4VESud06nkPSGC61XmwUex3VasL/i+6HCoyf926hSmRPiu3JFtJU4W1WsuQgpp79HJLDI5X3m+usJn8B2fBAW80AAAA=",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/sparql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "query": "SELECT ?scientificname WHERE {wd:Q594368 wdt:P225 ?scientificname.}"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:01:05 GMT",
+                  "Content-Type": "application/sparql-results+json;charset=utf-8",
+                  "Content-Length": 91,
+                  "Connection": "close",
+                  "Server": "nginx/1.13.6",
+                  "X-Served-By": "wdqs1004",
+                  "Access-Control-Allow-Origin": "*",
+                  "Cache-Control": "public, max-age=300",
+                  "Content-Encoding": "gzip",
+                  "Vary": "Accept, Accept-Encoding",
+                  "X-Varnish": "906637380, 263139175, 151665591",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Accept-Ranges": "bytes",
+                  "Age": "0",
+                  "X-Cache": "cp1077 pass, cp3041 miss, cp3030 pass",
+                  "X-Cache-Status": "miss",
+                  "Server-Timing": "cache;desc=\"miss\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT"
+                  ],
+                  "X-Analytics": "https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248"
+                },
+                "body": "H4sIAAAAAAAAA6vmUlBQykhNTFFSsFKoBnKA3LLEomIQN1pBqTg5MzWvJDMtMzkvMTdVSSEWqKJWB6SnKLW4NKekGElbUmZeSmZeOlQrWCVXLQCq7z6KYAAAAA==",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/sparql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "query": "SELECT ?scientificname WHERE {wd:Z123456789 wdt:P225 ?scientificname.}"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:07:55 GMT",
+                  "Content-Type": "application/sparql-results+json;charset=utf-8",
+                  "Content-Length": 91,
+                  "Connection": "close",
+                  "Server": "nginx/1.13.6",
+                  "X-Served-By": "wdqs1004",
+                  "Access-Control-Allow-Origin": "*",
+                  "Cache-Control": "public, max-age=300",
+                  "Content-Encoding": "gzip",
+                  "Vary": "Accept, Accept-Encoding",
+                  "X-Varnish": "1002685606, 303963824, 171456135",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Accept-Ranges": "bytes",
+                  "Age": "0",
+                  "X-Cache": "cp1089 pass, cp3041 miss, cp3030 pass",
+                  "X-Cache-Status": "miss",
+                  "Server-Timing": "cache;desc=\"miss\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT"
+                  ],
+                  "X-Analytics": "https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248"
+                },
+                "body": "H4sIAAAAAAAAA6vmUlBQykhNTFFSsFKoBnKA3LLEomIQN1pBqTg5MzWvJDMtMzkvMTdVSSEWqKJWB6SnKLW4NKekGElbUmZeSmZeOlQrWCVXLQCq7z6KYAAAAA==",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/sparql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "query": "SELECT ?scientificname WHERE {wd: wdt:P225 ?scientificname.}"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:07:56 GMT",
+                  "Content-Type": "application/sparql-results+json;charset=utf-8",
+                  "Content-Length": 91,
+                  "Connection": "close",
+                  "Server": "nginx/1.13.6",
+                  "X-Served-By": "wdqs1005",
+                  "Access-Control-Allow-Origin": "*",
+                  "Cache-Control": "public, max-age=300",
+                  "Content-Encoding": "gzip",
+                  "Vary": "Accept, Accept-Encoding",
+                  "X-Varnish": "983259086, 91565117, 179294784",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Age": "0",
+                  "X-Cache": "cp1089 pass, cp3032 miss, cp3030 miss",
+                  "X-Cache-Status": "miss",
+                  "Server-Timing": "cache;desc=\"miss\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT"
+                  ],
+                  "X-Analytics": "https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248",
+                  "Accept-Ranges": "bytes"
+                },
+                "body": "H4sIAAAAAAAAA6vmUlBQykhNTFFSsFKoBnKA3LLEomIQN1pBqTg5MzWvJDMtMzkvMTdVSSEWqKJWB6SnKLW4NKekGElbUmZeSmZeOlQrWCVXLQCq7z6KYAAAAA==",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/sparql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "query": "SELECT ?scientificname WHERE {wd:null wdt:P225 ?scientificname.}"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:07:57 GMT",
+                  "Content-Type": "application/sparql-results+json;charset=utf-8",
+                  "Content-Length": 91,
+                  "Connection": "close",
+                  "Server": "nginx/1.13.6",
+                  "X-Served-By": "wdqs1005",
+                  "Access-Control-Allow-Origin": "*",
+                  "Cache-Control": "public, max-age=300",
+                  "Content-Encoding": "gzip",
+                  "Vary": "Accept, Accept-Encoding",
+                  "X-Varnish": "983160743, 432908843, 202518681",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Accept-Ranges": "bytes",
+                  "Age": "0",
+                  "X-Cache": "cp1089 pass, cp3030 miss, cp3030 pass",
+                  "X-Cache-Status": "miss",
+                  "Server-Timing": "cache;desc=\"miss\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT"
+                  ],
+                  "X-Analytics": "https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248"
+                },
+                "body": "H4sIAAAAAAAAA6vmUlBQykhNTFFSsFKoBnKA3LLEomIQN1pBqTg5MzWvJDMtMzkvMTdVSSEWqKJWB6SnKLW4NKekGElbUmZeSmZeOlQrWCVXLQCq7z6KYAAAAA==",
+                "_mode": "binary"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "GET"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/sparql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {
+                  "query": "SELECT ?scientificname WHERE {wd:undefined wdt:P225 ?scientificname.}"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Date": "Thu, 09 May 2019 20:07:57 GMT",
+                  "Content-Type": "application/sparql-results+json;charset=utf-8",
+                  "Transfer-Encoding": "chunked",
+                  "Connection": "close",
+                  "Server": "nginx/1.13.6",
+                  "X-Served-By": "wdqs1004",
+                  "Access-Control-Allow-Origin": "*",
+                  "Cache-Control": "public, max-age=300",
+                  "Content-Encoding": "gzip",
+                  "Vary": "Accept, Accept-Encoding",
+                  "X-Varnish": "458617144, 35833457, 178464607",
+                  "Via": "1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1), 1.1 varnish (Varnish/5.1)",
+                  "Accept-Ranges": "bytes",
+                  "Age": "0",
+                  "X-Cache": "cp1075 pass, cp3040 miss, cp3030 pass",
+                  "X-Cache-Status": "miss",
+                  "Server-Timing": "cache;desc=\"miss\"",
+                  "Strict-Transport-Security": "max-age=106384710; includeSubDomains; preload",
+                  "Set-Cookie": [
+                    "WMF-Last-Access=09-May-2019;Path=/;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT",
+                    "WMF-Last-Access-Global=09-May-2019;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon, 10 Jun 2019 12:00:00 GMT"
+                  ],
+                  "X-Analytics": "https=1;nocookies=1",
+                  "X-Client-IP": "146.241.64.248"
+                },
+                "body": "H4sIAAAAAAAAA6vmUlBQykhNTFFSsFKoBnKA3LLEomIQN1pBqTg5MzWvJDMtMzkvMTdVSSEWqKJWB6SnKLW4NKekGElbUmZeSmZeOlQrWCVXLQCq7z6KYAAAAA==",
+                "_mode": "binary"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
