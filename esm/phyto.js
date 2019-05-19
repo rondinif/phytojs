@@ -1,5 +1,29 @@
-"use strict";
-export const openDataPromisesFactories = {
+import { Log } from './log.js';
+
+// DIP: export Higher-order function factories : each of them returns a function as its result.
+
+// Higher-order function: returns a function as its result.
+function makeGetPromiseOfWikiDataApiResults(fetch, log) {
+  return (uri, headers) => {
+    return fetch(encodeURI(uri), {
+      headers: headers // ,
+      // method: 'GET', ...mode, cache , see 
+    }).then(body => body.json())
+      .catch(err => log.error(`ERROR FETCHING DATA: ${err.message}`));
+  };
+}
+
+// Higher-order function: returns a function as its result.
+function makeGetPromiseOfSparqlResults(fetch, log) {
+  return (serviceUri, sparql, headers) => {
+    const uri = `${serviceUri}/sparql?query=${sparql}`;
+    return fetch(encodeURI(uri), { headers })
+      .then(body => body.json())
+      .catch(err => log.error(`ERROR FETCHING DATA: ${err.message}`));
+  };
+}
+
+const openDataPromisesFactories = {
   makeWdSearchByAnyName: (ff, config, log) => name => {
     return getPromiseOfWikiDataApiActionQuerySearchByName({ ff, config, log }, name);
   },
@@ -14,7 +38,7 @@ export const openDataPromisesFactories = {
   },
 };
 
-export const openDataEndpointFactories = {
+const openDataEndpointFactories = {
   makeWdEndpointUri: (config, log) => () => {
     return getWdEndpointUri({ config, log });
   },
@@ -110,7 +134,7 @@ data una wikidata entity ( es: Q23501) che dovrebbe essere di un taxon
 ne ricava il nome scentifico eseguendo una query spqrql ad un endpoint di wikidata
 */
 function getPromiseOfSparqlGetScientificNameByEntityId({ ffSparql, config, log }, entityId) {
-  const sparql = `SELECT ?scientificname WHERE {wd:${entityId} wdt:P225 ?scientificname.}`
+  const sparql = `SELECT ?scientificname WHERE {wd:${entityId} wdt:P225 ?scientificname.}`;
   const headers = { 'Accept': 'application/sparql-results+json' };
   // return OpenDataAsyncRequest.getPromiseOfSparqlResults(serviceUri, sparql, headers);
   return ffSparql(getSparqlEndpointUri({ config, log }), sparql, headers);
@@ -205,7 +229,7 @@ function getPromiseOfPlantResolvedByOpendataByName({ ff, ffSparql, config, log }
               log.warn(`specieArticle #ND [${e.message}]`);
             }
           } catch (eo) {             
-            log.error(eo.message);  // UNCOVERED ( intentionally left for DEFENSIVE PROGRAMMING )
+            log.error(eo.message);  // UNCOVERED ( intentionally left for DIFENSIVE PROGRAMMING )
           }
 
           entities[i] = {
@@ -215,7 +239,7 @@ function getPromiseOfPlantResolvedByOpendataByName({ ff, ffSparql, config, log }
             scientificName: scientificName,
             taxonRankId: taxonRankId,
             taxonRankLabel: taxonRankLabel,
-          }
+          };
           if (specieArticle) {
             entities[i]["specieArticle"] = specieArticle;
           }
@@ -227,7 +251,91 @@ function getPromiseOfPlantResolvedByOpendataByName({ ff, ffSparql, config, log }
           name: responseOfPlantsSearchedByAnyName.name,
           plants: entities
         });
-      })().catch(e => log.debug("loopWDEntities Caught Error: " + e)); // UNCOVERED ( intentionally left for DEFENSIVE PROGRAMMING )
+      })().catch(e => log.debug("loopWDEntities Caught Error: " + e)); // UNCOVERED ( intentionally left for DIFENSIVE PROGRAMMING )
     }); // closing res.then
   });
 }
+
+// https://humanwhocodes.com/blog/2019/01/stop-using-default-exports-javascript-module/
+/**
+ * This is a description of the Phyto constructor function.
+ * @class
+ * @classdesc This is a description of the Phyto class.
+ */
+class Phyto {
+
+    /**
+    * @constructor
+    * @param {Function} fetch
+    * @param {Function} config
+    * @param {Function} logger
+    */
+    constructor(fetch, config$1, log) {
+      let effectiveConfig = (typeof config$1 == 'undefined') ? (typeof config == undefined) ? {isUnderTest: () => false } : config  : config$1;
+      let effectiveLog = (typeof log == 'undefined') ? new Log((typeof logconfig == undefined) ? {isLogVerbose: () => false, isLogSilent: () => true } : logconfig) : log; 
+
+      const _ff = makeGetPromiseOfWikiDataApiResults(fetch, effectiveLog);
+      const _ffSparql = makeGetPromiseOfSparqlResults(fetch, effectiveLog);
+      
+      this._wdSearchByAnyName = openDataPromisesFactories.makeWdSearchByAnyName(_ff, effectiveConfig, effectiveLog);
+      this._wdPlantsByAnyName = openDataPromisesFactories.makeWdPlantsByAnyName(_ff, effectiveConfig, effectiveLog);
+      this._resolvedPlantsByName = openDataPromisesFactories.makeResolvedPlantsByName(_ff, _ffSparql, effectiveConfig, effectiveLog);
+      this._sparqlScientificNameById = openDataPromisesFactories.makeSparqlScientificNameById( _ffSparql, effectiveConfig, effectiveLog);
+
+      this._wdEndpointUri = openDataEndpointFactories.makeWdEndpointUri(effectiveConfig, effectiveLog);
+      this._sparqlEndpointUri = openDataEndpointFactories.makeSparqlEndpointUri(effectiveConfig, effectiveLog);
+    }
+
+    // SECTION which concerns: `openDataPromisesFactories`  
+
+    /**
+    * @param {string} name
+    * @return {Promise}
+    */
+    wdSearchByAnyName(name) {
+      return this._wdSearchByAnyName(name);
+    }
+
+    /**
+    * @param {string} name
+    * @return {Promise}
+    */
+    wdPlantsByAnyName(name) {
+        return this._wdPlantsByAnyName(name);
+    }
+
+    /**
+    * @param {string} name
+    * @return {Promise}
+    */
+    resolvedPlantsByName(name) {
+        return this._resolvedPlantsByName(name);
+    }
+
+    /**
+    * @param {string} id
+    * @return {Promise}
+    */
+    sparqlScientificNameById(id) {
+        return this._sparqlScientificNameById(id);
+    } 
+
+    // SECTION which concerns: `openDataEndpointFactories`
+
+    /**
+    * @return {string}
+    */
+    getSparqlEndpointUri() {
+        return this._sparqlEndpointUri(); 
+    }
+
+    /**
+    * @return {string}
+    */
+   getWikiDataApiEndpointUri() {
+        return this._wdEndpointUri(); 
+    }
+
+}
+
+export { Phyto };

@@ -1,0 +1,59 @@
+{
+    "name": "endivia",
+    "plants": [
+        {
+            "wdEntityId": "Q178547",
+            "wdPageId": 177946,
+            "wdSnippet": "species of plant",
+            "scientificName": "Cichorium endivia",
+            "taxonRankId": "http://www.wikidata.org/entity/Q7432",
+            "taxonRankLabel": "species",
+            "specieArticle": "https://species.wikimedia.org/wiki/Cichorium_endivia",
+            "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Endive%20p1160063.jpg"
+        },
+        {
+            "wdEntityId": "Q21379590",
+            "wdPageId": 23425808,
+            "wdSnippet": "variety of plant",
+            "scientificName": "Cichorium endivia var. endivia",
+            "taxonRankId": "http://www.wikidata.org/entity/Q767728",
+            "taxonRankLabel": "variety",
+            "specieArticle": "https://species.wikimedia.org/wiki/Cichorium_endivia_var._endivia"
+        },
+        {
+            "wdEntityId": "Q3237463",
+            "wdPageId": 3090299,
+            "wdSnippet": "variety of plant",
+            "scientificName": "Cichorium endivia var. latifolium",
+            "taxonRankId": "http://www.wikidata.org/entity/Q767728",
+            "taxonRankLabel": "variety",
+            "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cichorium%20endivia%20field.jpg"
+        },
+        {
+            "wdEntityId": "Q21379595",
+            "wdPageId": 23425813,
+            "wdSnippet": "variety of plant",
+            "scientificName": "Cichorium endivia var. roborovskyi",
+            "taxonRankId": "http://www.wikidata.org/entity/Q767728",
+            "taxonRankLabel": "variety",
+            "specieArticle": "https://species.wikimedia.org/wiki/Cichorium_endivia_var._roborovskyi"
+        },
+        {
+            "wdEntityId": "Q19608739",
+            "wdPageId": 21208125,
+            "wdSnippet": "subspecies of plant",
+            "scientificName": "Cichorium endivia subsp. divaricatum",
+            "taxonRankId": "http://www.wikidata.org/entity/Q68947",
+            "taxonRankLabel": "subspecies"
+        },
+        {
+            "wdEntityId": "Q2963415",
+            "wdPageId": 2834052,
+            "wdSnippet": "variety of plant",
+            "scientificName": "Cichorium endivia var. crispum",
+            "taxonRankId": "http://www.wikidata.org/entity/Q767728",
+            "taxonRankLabel": "variety",
+            "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Chicoree%20frisee.jpg"
+        }
+    ]
+}

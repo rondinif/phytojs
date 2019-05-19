@@ -211,6 +211,21 @@ nocktest('resolvedPlantsByName_returns_plants_only', async function (assert) {
   assert.end();
 });
 
+import snapshotResolvedPlantsByName_endivia from '../fixture/lib/OpenDataLogicAgent/resolvedPlantsByName/expected-endivia-snapshot.json' 
+nocktest('resolvedPlantsByName_can_return_plants_with_an_undefined_image', async function (assert) {
+  // Arrange
+  //   ...due to syntax requirements the management of fixtures is outside this code block
+  const searchTerm = 'endivia';
+  console.log(`search term: \"${searchTerm}\"`)
+  // Act
+  const queryResult = await phyto.resolvedPlantsByName(searchTerm);
+  console.log(JSON.stringify(queryResult));
+  // Assert
+  assert.deepEqual(queryResult, snapshotResolvedPlantsByName_endivia, 'resolvedPlantsByName potrebbe ritornare alcune piante per le quali la image non è definita');
+
+  resolvedPlantsByNameCommonAssertions(assert, searchTerm, queryResult);
+  assert.end();
+});
 
 import snapshotResolvedPlantsByName_bietola_da_coste from '../fixture/lib/OpenDataLogicAgent/resolvedPlantsByName/expected-bietola_da_coste-snapshot.json' 
 nocktest('resolvedPlantsByName_could_return_an_empty_list', async function (assert) {

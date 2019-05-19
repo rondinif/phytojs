@@ -22,13 +22,23 @@ npm i
 
 ### Build
 ``` bash
-npm run prepare
+npm run clean:prepare:cover
 ```
+<!-- TODO add postprocessing to fix import in `umd/phyto.js` to fix import to ./ (current dir) instead of ../esm -->
 
 ### Unit tests
 ``` bash
 npm test
+# to execute specific test suites: 
+npm run test-index
+npm run test-config
+npm run test-config-stubbed
+npm run test-odla
+npm run test-odla-special
+npm run test-odla-stubbed
+npm run test-odla-sandboxed
 ```
+
 <!--
 ### Linting
 
@@ -37,19 +47,11 @@ Run `npm run lint`
 ## Why
 -->
 
-### Examples
-#### UMD (Universal Module Definition) sample
-`AMD` and `CJS` (`CommonJS`) are both compatible with `UMD`.
-
-##### run UMD example that uses `require`.
-``` bash 
-node  ./samples/index.umd.js
-```
-##### run UMD example that uses `import`.
-``` bash 
-node  -r esm ./samples/index.umd.esm.js
-```
-##### run ESM example.
-``` bash 
-node  -r esm ./samples/index.esm.js
-```
+## Examples
+# [PhytoJS Samples for NodeJS](https://github.com/rondinif/phytojs/samples) 
+There are examples that use both `require` and `import` to reference the PhytoJS servive module. 
+- UMD (Universal Module Definition)
+    - `AMD` and `CJS` (`CommonJS`) are both compatible with `UMD`
+- ESM / ES6 (ECMAScript.next and TC39 Module Definition)
+# [PhytoJS Samples for the browser](https://github.com/rondinif/docs)
+## Live [Demo of PhytoJS running in the browser](https://rondinif.github.io/rondinif/phytojs)

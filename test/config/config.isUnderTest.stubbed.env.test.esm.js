@@ -6,9 +6,9 @@ import { config , DEFAULT_IS_UNDER_TEST } from '../../esm/config'
 test('isUnderTest() should respond even if`IS_UNDER_TEST` environment setting is missing.', function (assert) {
   const sandbox = sinon.createSandbox();
   sandbox.stub(process, 'env').value({});
-  assert.equal(config.isUnderTest(), DEFAULT_IS_UNDER_TEST, 'when IS_UNDER_TEST is not present in the envirinment  isUnderTest() returns DEFAULT_IS_UNDER_TEST');
+  assert.equal(config.isUnderTest(), DEFAULT_IS_UNDER_TEST, 'when IS_UNDER_TEST is not present in the environment  isUnderTest() returns DEFAULT_IS_UNDER_TEST');
 
-  assert.equal(DEFAULT_IS_UNDER_TEST, false, 'when IS_UNDER_TEST is not present in the envirinment  isUnderTest() returns DEFAULT_IS_UNDER_TEST that is false');
+  assert.equal(DEFAULT_IS_UNDER_TEST, false, 'when IS_UNDER_TEST is not present in the environment  isUnderTest() returns DEFAULT_IS_UNDER_TEST that is false');
 
   assert.end();
   sandbox.restore();

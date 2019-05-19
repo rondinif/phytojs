@@ -1,7 +1,7 @@
 (function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('dotenv-flow')) :
    typeof define === 'function' && define.amd ? define(['exports', 'dotenv-flow'], factory) :
-   (global = global || self, factory(global.config = {}, global.dotenv));
+   (global = global || self, factory(global.logconfig = {}, global.dotenv));
 }(this, function (exports, dotenv) { 'use strict';
 
    dotenv = dotenv && dotenv.hasOwnProperty('default') ? dotenv['default'] : dotenv;
@@ -19,7 +19,8 @@
    Coding Conventions: before each configuration a comment SHOULD be written; the comment also shows the names of the environment variables that can influence the effective configuration value. When present this comment MUST be updated also in the config.checker.mjs program.
    */
 
-   const DEFAULT_IS_UNDER_TEST = false;
+   const DEFAULT_IS_LOG_VERBOSE = false;
+   const DEFAULT_IS_LOG_SILENT = true;
 
    const castToBoolen = (anyValue) => {
        // console.log(`castToBoolen::anyValue: ${anyValue}`);
@@ -42,19 +43,29 @@
        }
    };
 
-   const config = {
+   const logconfig = {
        /* 
-       the test features are enabed
-       affected by .env IS_FILESTORE_WRITING_ENABLED
+       the log is verbose enabed
+       affected by .env IS_LOG_VERBOSE
        */
-      isUnderTest: function () {
-           return process.env.IS_UNDER_TEST ?
-               castToBoolen(process.env.IS_UNDER_TEST) :
-               DEFAULT_IS_UNDER_TEST;
+      isLogVerbose: function () {
+           return process.env.IS_LOG_VERBOSE ?
+               castToBoolen(process.env.IS_LOG_VERBOSE) :
+               DEFAULT_IS_LOG_VERBOSE;
+       },
+       /* 
+       the log is verbose enabed
+       affected by .env IS_LOG_VERBOSE
+       */
+       isLogSilent: function () {
+           return process.env.IS_LOG_SILENT ?
+               castToBoolen(process.env.IS_LOG_SILENT) :
+               DEFAULT_IS_LOG_SILENT;
        }
    };
 
-   exports.DEFAULT_IS_UNDER_TEST = DEFAULT_IS_UNDER_TEST;
-   exports.config = config;
+   exports.DEFAULT_IS_LOG_SILENT = DEFAULT_IS_LOG_SILENT;
+   exports.DEFAULT_IS_LOG_VERBOSE = DEFAULT_IS_LOG_VERBOSE;
+   exports.logconfig = logconfig;
 
 }));

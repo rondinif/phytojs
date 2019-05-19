@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (global = global || self, factory(global.phyto = {}));
-}(this, function (exports) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('./config'), require('./logconfig'), require('./log')) :
+  typeof define === 'function' && define.amd ? define(['exports', './config', './logconfig', './log'], factory) :
+  (global = global || self, factory(global.phyto = {}, global.config, global.logconfig, global.log));
+}(this, function (exports, config, logconfig, log) { 'use strict';
 
   // DIP: export Higher-order function factories : each of them returns a function as its result.
 
@@ -42,9 +42,27 @@
     },
   };
 
-  // TODO: usare costanti per le url come ad esempio: 'http://127.0.0.1:6568'
-  // TODO: programmazione difensiva? check valditità delle deps?
-  // TODO: vedi lib/dataloader.mjs ... capire se ha senso implementare qui, rimuovere dataloader.mjs
+  const openDataEndpointFactories = {
+    makeWdEndpointUri: (config, log) => () => {
+      return getWdEndpointUri({ config, log });
+    },
+    makeSparqlEndpointUri: (config, log) => () => {
+      return getSparqlEndpointUri({ config, log });
+    }
+  };
+
+  function getSparqlEndpointUri({ config, log }) {
+    const serviceUri = config.isUnderTest() ? 'http://127.0.0.1:6569' : 'https://query.wikidata.org';
+    log.debug(`sparqlEndpointUri: ${serviceUri}`);
+    return serviceUri;
+  }
+
+  function getWdEndpointUri({ config, log }) {
+    const svc = config.isUnderTest() ? 'http://127.0.0.1:6568' : 'https://www.wikidata.org';
+    const serviceUri = `${svc}/w/api.php`;
+    log.debug(`wdEndpointUri: ${serviceUri}`);
+    return serviceUri;
+  }
 
   /* wdSearchByAnyName:
   dato un nome generico nome di pianta espresso in qualsiasi lingua
@@ -53,9 +71,8 @@
   */
   function getPromiseOfWikiDataApiActionQuerySearchByName({ ff, config, log }, name) {
     name = (name === undefined) ? "" : name;
-    const serviceUri = config.isUnderTest() ? 'http://127.0.0.1:6568' : 'https://www.wikidata.org';
-    const uri = `${serviceUri}/w/api.php?action=query&format=json&origin=*&list=search&srsearch=${name}&srlimit=500`;
-    log.trace(uri);
+    const uri = `${getWdEndpointUri({ config, log })}?action=query&format=json&origin=*&list=search&srsearch=${name}&srlimit=500`;
+    log.debug(uri);
     const headers = { 'Accept': 'application/json' };
     // ritorna la promise ottenta dal modulo di gestione delle richieste http asincone verso opendata
     // return OpenDataAsyncRequest.getPromiseOfWikiDataApiResults( uri, headers );
@@ -74,36 +91,46 @@
     } else if (name === null) {
       return { name: null, plants: [] };
     }
-
     const response = await getPromiseOfWikiDataApiActionQuerySearchByName({ ff, config, log }, name);
-    log.trace(JSON.stringify(response));
-    if (response.error) {
+    try {
+      log.debug(JSON.stringify(response)); // there is a response we can log it.
+      if (response.error) {
+        return {
+          name: name,
+          plants: [],
+          error: {
+            code: response.error.code,
+            message: response.error.info
+          }
+        }
+      }
+
+      let plants = response.query.search.filter((item) => {
+        // species of plant
+        // variety of plants
+        return (
+          item.snippet.toLowerCase().includes("plant")
+          ||
+          item.snippet.toLowerCase().includes("cultivar")
+        );
+      });
+      // log.debug('============================');
+      // log.debug(name);
+      // log.debug(JSON.stringify(plants));
+      return {
+        "name": name,
+        "plants": plants
+      };
+    } catch (someError) {
       return {
         name: name,
         plants: [],
         error: {
-          code: response.error.code,
-          message: response.error.info,
+          code: "999",
+          message: `unexpected ${someError.message}`
         }
       }
     }
-
-    let plants = response.query.search.filter((item) => {
-      // species of plant
-      // variety of plants
-      return (
-        item.snippet.toLowerCase().includes("plant")
-        ||
-        item.snippet.toLowerCase().includes("cultivar")
-      );
-    });
-    // log.trace('============================');
-    // log.trace(name);
-    // log.trace(JSON.stringify(plants));
-    return {
-      "name": name,
-      "plants": plants
-    };
   }
 
   /* es: sparqlGetScientificNameByEntityId
@@ -111,11 +138,10 @@
   ne ricava il nome scentifico eseguendo una query spqrql ad un endpoint di wikidata
   */
   function getPromiseOfSparqlGetScientificNameByEntityId({ ffSparql, config, log }, entityId) {
-    const serviceUri = config.isUnderTest() ? 'http://127.0.0.1:6569' : 'https://query.wikidata.org';
     const sparql = `SELECT ?scientificname WHERE {wd:${entityId} wdt:P225 ?scientificname.}`;
     const headers = { 'Accept': 'application/sparql-results+json' };
     // return OpenDataAsyncRequest.getPromiseOfSparqlResults(serviceUri, sparql, headers);
-    return ffSparql(serviceUri, sparql, headers);
+    return ffSparql(getSparqlEndpointUri({ config, log }), sparql, headers);
   }
 
   /* 
@@ -123,7 +149,6 @@
   this function use the left-join semantics, which translates to the OPTIONAL keyword in SPARQL
   */
   function getPromiseOfSparqlGetScientificNameAndBasicAttributesByEntityId({ ffSparql, config, log }, entityId) {
-    const serviceUri = config.isUnderTest() ? 'http://127.0.0.1:6569' : 'https://query.wikidata.org';
     const sparql =
       `SELECT ?scientificname ?taxonrank ?taxonrankLabel ?image WHERE {
       OPTIONAL { wd:${entityId} wdt:P225 ?scientificname. }
@@ -133,7 +158,7 @@
     }`;
     const headers = { 'Accept': 'application/sparql-results+json' };
     // return OpenDataAsyncRequest.getPromiseOfSparqlResults(serviceUri, sparql, headers);
-    return ffSparql(serviceUri, sparql, headers);
+    return ffSparql(getSparqlEndpointUri({ config, log }), sparql, headers);
   }
 
   /* 
@@ -141,11 +166,10 @@
   ne ricava il relativo articolo wikimedia species 
   */
   function getPromiseOfSparqlGetSpecieArticleByEntityId({ ffSparql, config, log }, entityId) {
-    const serviceUri = config.isUnderTest() ? 'http://127.0.0.1:6569' : 'https://query.wikidata.org';
     const sparql = `SELECT ?article WHERE { ?article schema:about wd:${entityId}; schema:isPartOf <https://species.wikimedia.org/>. }`;
     const headers = { 'Accept': 'application/sparql-results+json' };
     // return OpenDataAsyncRequest.getPromiseOfSparqlResults(serviceUri, sparql, headers);
-    return ffSparql(serviceUri, sparql, headers);
+    return ffSparql(getSparqlEndpointUri({ config, log }), sparql, headers);
   }
 
   /* ex: wdPromise
@@ -155,28 +179,24 @@
     return new Promise(resolveQuery => {
       const asyncPlants = getPlantsFromWikiDataApiActionQuerySearchByName({ ff, config, log }, name)
         .then((value) => {
-          // log.trace(JSON.stringify(value));
+          // log.debug(JSON.stringify(value));
           return value;
         });
       asyncPlants.then((responseOfPlantsSearchedByAnyName) => {
         let entities = [];
         (async function loopWDEntities() {
           for (let i = 0; i < responseOfPlantsSearchedByAnyName.plants.length; i++) {
-            //log.trace(i);
+            // log.debug(i);
             const wdEntity = responseOfPlantsSearchedByAnyName.plants[i].title;
             const wdPageId = responseOfPlantsSearchedByAnyName.plants[i].pageid;
             const wdSnippet = responseOfPlantsSearchedByAnyName.plants[i].snippet;
-            //log.trace(`wdEntity: ${wdEntity}`);            
+            // log.debug(`wdEntity: ${wdEntity}`);            
             const sparqlQueryScientificName = await getPromiseOfSparqlGetScientificNameAndBasicAttributesByEntityId({ ffSparql, config, log }, wdEntity);
-            if (sparqlQueryScientificName.results) {
-              try {
-                log.trace('%s', JSON.stringify(sparqlQueryScientificName.results));
-              } catch(errorLogging) {
-                log.error(errorLogging.message);
-              }
-            } else {
-              console.error("sparqlQueryScientificName" + JSON.stringify(sparqlQueryScientificName));
-            }
+            // DEFENSIVE PROGRAMMING BUT UNUSEFUL [ try {
+            log.debug('%s', JSON.stringify(sparqlQueryScientificName.results));
+            // } catch(errorLogging) {
+            //   log.error(`sparqlQueryScientificName got no results:${errorLogging.message}`);
+            // } // DEFENSIVE PROGRAMMING BUT UNUSEFUL ]
 
             let scientificName;
             try {
@@ -205,15 +225,15 @@
 
             let specieArticle;
             try {
-              const sparqlQueryArticle = await getPromiseOfSparqlGetSpecieArticleByEntityId({ ffSparql, config }, wdEntity);
+              const sparqlQueryArticle = await getPromiseOfSparqlGetSpecieArticleByEntityId({ ffSparql, config, log }, wdEntity);
               try {
                 specieArticle = sparqlQueryArticle.results.bindings[0].article.value;
                 log.info(specieArticle);
               } catch (e) {
                 log.warn(`specieArticle #ND [${e.message}]`);
               }
-            } catch (eo) {
-              log.error(eo.message);
+            } catch (eo) {             
+              log.error(eo.message);  // UNCOVERED ( intentionally left for DIFENSIVE PROGRAMMING )
             }
 
             entities[i] = {
@@ -235,16 +255,10 @@
             name: responseOfPlantsSearchedByAnyName.name,
             plants: entities
           });
-        })().catch(e => log.trace("loopWDEntities Caught Error: " + e));
+        })().catch(e => log.debug("loopWDEntities Caught Error: " + e)); // UNCOVERED ( intentionally left for DIFENSIVE PROGRAMMING )
       }); // closing res.then
     });
   }
-
-  /*
-  draft for potentially next queries
-  private/README-wikimedia-api.md
-  private/README-wikidata-sparql.md
-  */
 
   // https://humanwhocodes.com/blog/2019/01/stop-using-default-exports-javascript-module/
   /**
@@ -260,21 +274,23 @@
       * @param {Function} config
       * @param {Function} logger
       */
-      constructor(fetch, config, log) {
-        const _ff = makeGetPromiseOfWikiDataApiResults(fetch, log);
-        const _ffSparql = makeGetPromiseOfSparqlResults(fetch, log);
+      constructor(fetch, config$1, log$1) {
+        let effectiveConfig = (typeof config$1 == 'undefined') ? config.config : config$1;
+        let effectiveLog = (typeof log$1 == 'undefined') ? new log.Log(logconfig.logconfig) : log$1; 
+
+        const _ff = makeGetPromiseOfWikiDataApiResults(fetch, effectiveLog);
+        const _ffSparql = makeGetPromiseOfSparqlResults(fetch, effectiveLog);
         
-        this._wdSearchByAnyName = openDataPromisesFactories.makeWdSearchByAnyName(_ff, config, log);
-        this._wdPlantsByAnyName = openDataPromisesFactories.makeWdPlantsByAnyName(_ff, config, log);
-        this._resolvedPlantsByName = openDataPromisesFactories.makeResolvedPlantsByName(_ff, _ffSparql, config, log);
-        this._sparqlScientificNameById = openDataPromisesFactories.makeSparqlScientificNameById( _ffSparql, config, log);
+        this._wdSearchByAnyName = openDataPromisesFactories.makeWdSearchByAnyName(_ff, effectiveConfig, effectiveLog);
+        this._wdPlantsByAnyName = openDataPromisesFactories.makeWdPlantsByAnyName(_ff, effectiveConfig, effectiveLog);
+        this._resolvedPlantsByName = openDataPromisesFactories.makeResolvedPlantsByName(_ff, _ffSparql, effectiveConfig, effectiveLog);
+        this._sparqlScientificNameById = openDataPromisesFactories.makeSparqlScientificNameById( _ffSparql, effectiveConfig, effectiveLog);
+
+        this._wdEndpointUri = openDataEndpointFactories.makeWdEndpointUri(effectiveConfig, effectiveLog);
+        this._sparqlEndpointUri = openDataEndpointFactories.makeSparqlEndpointUri(effectiveConfig, effectiveLog);
       }
 
-      /*
-      get ready() {
-          return this._ready;
-      }
-      */
+      // SECTION which concerns: `openDataPromisesFactories`  
 
       /**
       * @param {string} name
@@ -307,6 +323,23 @@
       sparqlScientificNameById(id) {
           return this._sparqlScientificNameById(id);
       } 
+
+      // SECTION which concerns: `openDataEndpointFactories`
+
+      /**
+      * @return {string}
+      */
+      getSparqlEndpointUri() {
+          return this._sparqlEndpointUri(); 
+      }
+
+      /**
+      * @return {string}
+      */
+     getWikiDataApiEndpointUri() {
+          return this._wdEndpointUri(); 
+      }
+
   }
 
   exports.Phyto = Phyto;

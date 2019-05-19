@@ -269,11 +269,3 @@ Aggiungere il caso con #ND per soecificare cosa ritorna quando non trova il nome
 
 {"name":"pomodoro","entities":[{"id":"Q23501","scientificName":"Solanum lycopersicum"},{"id":"Q4930177","scientificName":"#ND"},{"id":"Q6540634","scientificName":"Solanum lycopersicum var. cerasiforme"}]}
 */
-
-
-
-/* 
-TODO:
-Nella documentazione descrivere la motivazione della scelta per cui si è scelto di posizionare la  __nock-fixtures__ non in './test/fixture/lib/OpenDataAsyncRequest/getPromiseOfWikiDataApiResults/__nock-fixtures__ ma in ./test/fixture/lib/OpenDataAsyncRequest/
-in quanto abbiamo due endpoint diversi a seconda del metodo api o sparql ... etc. etc.. 
-*/

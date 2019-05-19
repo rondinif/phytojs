@@ -1,6 +1,6 @@
-"use strict";
-import dotenv from 'dotenv-flow'
-dotenv.config()
+import dotenv from 'dotenv-flow';
+
+dotenv.config();
 /* 
 usage in programs: 
     import { config } from './lib/config.mjs';
@@ -13,7 +13,8 @@ WARNING: to avoid circular reference this module **MUST** not import moduled tha
 Coding Conventions: before each configuration a comment SHOULD be written; the comment also shows the names of the environment variables that can influence the effective configuration value. When present this comment MUST be updated also in the config.checker.mjs program.
 */
 
-export const DEFAULT_IS_UNDER_TEST = false;
+const DEFAULT_IS_LOG_VERBOSE = false;
+const DEFAULT_IS_LOG_SILENT = true;
 
 const castToBoolen = (anyValue) => {
     // console.log(`castToBoolen::anyValue: ${anyValue}`);
@@ -34,16 +35,27 @@ const castToBoolen = (anyValue) => {
             console.log(`castToBoolen::value: ${value}`);
             return value !== 0 ? true : false;
     }
-}
+};
 
-export const config = {
+const logconfig = {
     /* 
-    the test features are enabed
-    affected by .env IS_FILESTORE_WRITING_ENABLED
+    the log is verbose enabed
+    affected by .env IS_LOG_VERBOSE
     */
-   isUnderTest: function () {
-        return process.env.IS_UNDER_TEST ?
-            castToBoolen(process.env.IS_UNDER_TEST) :
-            DEFAULT_IS_UNDER_TEST;
+   isLogVerbose: function () {
+        return process.env.IS_LOG_VERBOSE ?
+            castToBoolen(process.env.IS_LOG_VERBOSE) :
+            DEFAULT_IS_LOG_VERBOSE;
+    },
+    /* 
+    the log is verbose enabed
+    affected by .env IS_LOG_VERBOSE
+    */
+    isLogSilent: function () {
+        return process.env.IS_LOG_SILENT ?
+            castToBoolen(process.env.IS_LOG_SILENT) :
+            DEFAULT_IS_LOG_SILENT;
     }
-}
+};
+
+export { DEFAULT_IS_LOG_SILENT, DEFAULT_IS_LOG_VERBOSE, logconfig };
