@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" data-framework="javascript">
+
+<head>
+    <meta charset="utf-8">
+    <title>PhytoJS</title>
+    <link rel=stylesheet href="mvc/app.css">
+</head>
+
+<body>
+
+    <section class="nosupport" hidden>
+        <h4>Apologies.. your browser doesn't support ES Modules. </h4>
+        <p>You <a href="https://github.com/rondinif/rondinif#readme">may be able to enable them with a flag</a>.
+    </section>
+
+    <script nomodule>
+        // script only runs browsers that don't support modules (ideally)
+        document.querySelector('.nosupport').hidden = false;
+    </script>
+    <script type=module>
+      // requires modules to hide. (FOUC in non-[nomodule] supporting browsers right now)
+     import {qs} from './mvc/helpers.js'
+      qs('.nosupport').hidden = true;
+    </script>
+
+    <section class="phytoapp">
+        <header class="header">
+            <h1>PhytoJS Examples</h1>
+            <a href="./mvc">Vanilla ES6 MVC SPA</a>
+        </header>
+    <footer class="info">
+        <p>Created by <a href="http://twitter.com/rondinif">Franco Rondini</a>
+            <p><a href="https://github.com/rondinif/phytojs#readme">repo: https://github.com/rondinif/phytojs#readme</a>
+    </footer>
+</body>
+
+</html>
