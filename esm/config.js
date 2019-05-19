@@ -1,11 +1,6 @@
-try { 
-    import dotenv from 'dotenv-flow';
-    dotenv.config();
-} 
-catch(err) {
-    // document.getElementById("demo").innerHTML = err.message;
-}
+import dotenv from 'dotenv-flow';
 
+dotenv.config();
 /* 
 usage in programs: 
     import { config } from './lib/config.mjs';

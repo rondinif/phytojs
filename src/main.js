@@ -8,9 +8,9 @@ import { config as defaultConfig } from './config/config';
 import { logconfig } from './config/logconfig';
 import { Log as DefaultLog } from './log/log';
 */ 
-import { config as defaultConfig } from '../esm/config.js'
-import { logconfig } from '../esm/logconfig.js'
-import { Log as DefaultLog } from '../esm/log.js' 
+import { config } from '../esm/config'
+import { logconfig } from '../esm/logconfig'
+import { Log } from '../esm/log' 
 
 // https://humanwhocodes.com/blog/2019/01/stop-using-default-exports-javascript-module/
 /**
@@ -26,9 +26,12 @@ export class Phyto {
     * @param {Function} config
     * @param {Function} logger
     */
-    constructor(fetch, config, log) {
-      let effectiveConfig = (typeof config == 'undefined') ? defaultConfig : config;
-      let effectiveLog = (typeof log == 'undefined') ? new DefaultLog(logconfig) : log; 
+    constructor(fetch, config$1, log) {
+//      let effectiveConfig = (typeof config == 'undefined') ? defaultConfig : config;
+//      let effectiveLog = (typeof log == 'undefined') ? new DefaultLog(logconfig) : log; 
+      let effectiveConfig = (typeof config$1 == 'undefined') ? (typeof config == undefined) ? {isUnderTest: () => false } : config  : config$1;
+      let effectiveLog = (typeof log == 'undefined') ? new Log((typeof logconfig == undefined) ? {isLogVerbose: () => false, isLogSilent: () => true } : logconfig) : log; 
+
 
       const _ff = makeGetPromiseOfWikiDataApiResults(fetch, effectiveLog);
       const _ffSparql = makeGetPromiseOfSparqlResults(fetch, effectiveLog);

@@ -1,6 +1,6 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('./config'), require('./logconfig'), require('./log')) :
-  typeof define === 'function' && define.amd ? define(['exports', './config', './logconfig', './log'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('../esm/config'), require('../esm/logconfig'), require('../esm/log')) :
+  typeof define === 'function' && define.amd ? define(['exports', '../esm/config', '../esm/logconfig', '../esm/log'], factory) :
   (global = global || self, factory(global.phyto = {}, global.config, global.logconfig, global.log));
 }(this, function (exports, config, logconfig, log) { 'use strict';
 
@@ -233,7 +233,7 @@
                 log.warn(`specieArticle #ND [${e.message}]`);
               }
             } catch (eo) {             
-              log.error(eo.message);  // UNCOVERED ( intentionally left for DIFENSIVE PROGRAMMING )
+              log.error(eo.message);  // UNCOVERED ( intentionally left for DEFENSIVE PROGRAMMING )
             }
 
             entities[i] = {
@@ -255,7 +255,7 @@
             name: responseOfPlantsSearchedByAnyName.name,
             plants: entities
           });
-        })().catch(e => log.debug("loopWDEntities Caught Error: " + e)); // UNCOVERED ( intentionally left for DIFENSIVE PROGRAMMING )
+        })().catch(e => log.debug("loopWDEntities Caught Error: " + e)); // UNCOVERED ( intentionally left for DEFENSIVE PROGRAMMING )
       }); // closing res.then
     });
   }
@@ -275,8 +275,11 @@
       * @param {Function} logger
       */
       constructor(fetch, config$1, log$1) {
-        let effectiveConfig = (typeof config$1 == 'undefined') ? config.config : config$1;
-        let effectiveLog = (typeof log$1 == 'undefined') ? new log.Log(logconfig.logconfig) : log$1; 
+  //      let effectiveConfig = (typeof config == 'undefined') ? defaultConfig : config;
+  //      let effectiveLog = (typeof log == 'undefined') ? new DefaultLog(logconfig) : log; 
+        let effectiveConfig = (typeof config$1 == 'undefined') ? (typeof config.config == undefined) ? {isUnderTest: () => false } : config.config  : config$1;
+        let effectiveLog = (typeof log$1 == 'undefined') ? new log.Log((typeof logconfig.logconfig == undefined) ? {isLogVerbose: () => false, isLogSilent: () => true } : logconfig.logconfig) : log$1; 
+
 
         const _ff = makeGetPromiseOfWikiDataApiResults(fetch, effectiveLog);
         const _ffSparql = makeGetPromiseOfSparqlResults(fetch, effectiveLog);

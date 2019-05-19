@@ -1,15 +1,6 @@
-const isNode = ( typeof window === 'undefined')
-/*
-if (isNode) {
-  try {
-    import { config } from '../esm/config.js';
-    import { logconfig } from '../esm/logconfig.js';
-  } catch (e) {
-    console.log("?");
-  }
-}
-*/
-import { Log } from '../esm/log.js';
+import { config } from '../esm/config';
+import { logconfig } from '../esm/logconfig';
+import { Log } from '../esm/log';
 
 // DIP: export Higher-order function factories : each of them returns a function as its result.
 
@@ -240,7 +231,7 @@ function getPromiseOfPlantResolvedByOpendataByName({ ff, ffSparql, config, log }
               log.warn(`specieArticle #ND [${e.message}]`);
             }
           } catch (eo) {             
-            log.error(eo.message);  // UNCOVERED ( intentionally left for DIFENSIVE PROGRAMMING )
+            log.error(eo.message);  // UNCOVERED ( intentionally left for DEFENSIVE PROGRAMMING )
           }
 
           entities[i] = {
@@ -262,7 +253,7 @@ function getPromiseOfPlantResolvedByOpendataByName({ ff, ffSparql, config, log }
           name: responseOfPlantsSearchedByAnyName.name,
           plants: entities
         });
-      })().catch(e => log.debug("loopWDEntities Caught Error: " + e)); // UNCOVERED ( intentionally left for DIFENSIVE PROGRAMMING )
+      })().catch(e => log.debug("loopWDEntities Caught Error: " + e)); // UNCOVERED ( intentionally left for DEFENSIVE PROGRAMMING )
     }); // closing res.then
   });
 }
@@ -282,8 +273,11 @@ class Phyto {
     * @param {Function} logger
     */
     constructor(fetch, config$1, log) {
+//      let effectiveConfig = (typeof config == 'undefined') ? defaultConfig : config;
+//      let effectiveLog = (typeof log == 'undefined') ? new DefaultLog(logconfig) : log; 
       let effectiveConfig = (typeof config$1 == 'undefined') ? (typeof config == undefined) ? {isUnderTest: () => false } : config  : config$1;
       let effectiveLog = (typeof log == 'undefined') ? new Log((typeof logconfig == undefined) ? {isLogVerbose: () => false, isLogSilent: () => true } : logconfig) : log; 
+
 
       const _ff = makeGetPromiseOfWikiDataApiResults(fetch, effectiveLog);
       const _ffSparql = makeGetPromiseOfSparqlResults(fetch, effectiveLog);
