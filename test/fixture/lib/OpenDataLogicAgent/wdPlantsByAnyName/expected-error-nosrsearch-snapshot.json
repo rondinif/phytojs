@@ -1,8 +1,0 @@
-{
-    "name": "",
-    "plants": [],
-    "error": {
-        "code": "nosrsearch",
-        "message": "The \"srsearch\" parameter must be set."
-    }
-}
