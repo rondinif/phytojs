@@ -54,4 +54,4 @@ There are examples that use both `require` and `import` to reference the PhytoJS
     - `AMD` and `CJS` (`CommonJS`) are both compatible with `UMD`
 - ESM / ES6 (ECMAScript.next and TC39 Module Definition)
 # [PhytoJS Samples for the browser](https://github.com/rondinif/docs)
-## Live [Demo of PhytoJS running in the browser](https://rondinif.github.io/rondinif/phytojs)
+## Live [Demo of PhytoJS running in the browser](https://rondinif.github.io/phytojs/mvc)
