@@ -55,3 +55,6 @@ There are examples that use both `require` and `import` to reference the PhytoJS
 - ESM / ES6 (ECMAScript.next and TC39 Module Definition)
 # [PhytoJS Samples for the browser](https://github.com/rondinif/docs)
 ## Live [Demo of PhytoJS running in the browser](https://rondinif.github.io/phytojs/mvc)
+
+### Contributing
+Simply [we encourage contributions from everyone](https://github.com/rondinif/phytojs/blob/master/.github/CONTRIBUTING.md)
