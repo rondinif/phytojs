@@ -1,16 +1,41 @@
 # PhytoJS Samples for the web browser
-[./docs](../docs) has *use-cases* for the web browser, if you're looking for examples to run in nodejs please look at the [./docs](../docs folder; if you're looking for the documentation of the PhytoJS service component please look at the project [./README.md](../readme.md)  
+[./docs](../docs) has *use-cases* for the web browser, if you're looking for examples to run in nodejs please look at the [./docs](../docs) folder; if you're looking for the documentation of the PhytoJS service component please look at the project [./README.md](../README.md)  
 
 ## Vanillajs (ECMAScript.next) MVC Example
 [Live Demo](https://rondinif.github.io/rondinif/phytojs)
 [demo sources](./docs/mvc)
+
+Will work in your browser in these cases:
+
+<ul>
+<li>Safari 10.1.</li>
+<li>Chrome 61.</li>
+<li>Firefox 54 – behind the <code>dom.moduleScripts.enabled</code> setting in <code>about:config</code>.</li>
+<li>Edge 15 – behind the Experimental JavaScript Features setting in <code>about:flags</code>.</li>
+</ul>
+
+### development
 ``` bash 
-# this demo require http-server; if you haven't install it `npm i http-server -g`
+# this demo require http-server; if you haven't it then install it: `npm i http-server -g`
 npm start 
 # then navigate to http://localhost:8080 
 ```
+In any case this is a Single-Page Application (SPA) of static pages with browser friendly ES Modules therefore
+you can choose to serve it the way you like; for example:
+``` bash 
+git clone https://github.com/rondinif/phytojs.git
+cd ./phytojs/docs/mvc 
+python -m SimpleHTTPServer
+# Serving HTTP on 0.0.0.0 port 8000 ...
+#  then navigate to http://localhost:8000 
+```
 
+### Acknowledgments
 
+This example was created by [rondinif](https://github.com/rondinif) importing the PhytoJs library into a a Single-Page Application (SPA) inspired by the following works 
+- (https://github.com/paulirish/es-modules-todomvc) by [Paul Irish](https://github.com/paulirish)
+- (https://github.com/kentcdodds/es6-todomvc) by [Kent C. Dodds](https://github.com/kentcdodds)
+under [MIT LICENCE](https://github.com/kentcdodds/es6-todomvc/blob/master/LICENSE) 
 
 <!--
 ## JS 
