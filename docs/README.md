@@ -37,6 +37,8 @@ This example was created by [rondinif](https://github.com/rondinif) importing th
 - (https://github.com/kentcdodds/es6-todomvc) by [Kent C. Dodds](https://github.com/kentcdodds)
 under [MIT LICENCE](https://github.com/kentcdodds/es6-todomvc/blob/master/LICENSE) 
 
+### Contributing
+[we encourage contributions from everyone](../.github/CONTRIBUTING.md)
 <!--
 ## JS 
 ./bootstrap.js
