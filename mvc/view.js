@@ -24,6 +24,7 @@ export default class View {
     this.$footer = qs('.footer')
     this.$toggleAll = qs('.toggle-all')
     this.$newPhyto = qs('.new-phyto')
+    this.$loader = qs('.loader')
   }
 
   _removeItem(id) {
@@ -91,7 +92,10 @@ export default class View {
       },
       editItemDone: function() {
         that._editItemDone(parameter.id, parameter.title)
-      } */
+      } */ ,
+      loaderBlockVisibility: function() {
+        that.$loader.style.display = that.$loader.style.display = parameter.visible ? 'block' : 'none'
+      },
     }
     
     viewCommands[viewCmd]()
