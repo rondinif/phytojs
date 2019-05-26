@@ -1,19 +1,17 @@
 language: node_js
 node_js:
-  - 10
   - 11
   - node
 
 env:
-  - IS_UNDER_TEST=true
-  - IS_LOG_SILENT=true
-  - IS_LOG_VERBOSE=false
+  - IS_UNDER_TEST=true IS_LOG_SILENT=true IS_LOG_VERBOSE=false
+  - IS_UNDER_TEST=true IS_LOG_SILENT=false IS_LOG_VERBOSE=true
 
 install:
   - npm install
 
 script:
-  - npm clean:prepare:cover
+  - npm run clean:prepare:cover
 
 after_success:
   - npm run coveralls
