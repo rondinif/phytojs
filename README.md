@@ -53,12 +53,12 @@ Run `npm run lint`
 -->
 
 ## Examples
-# [PhytoJS Samples for NodeJS](https://github.com/rondinif/phytojs/samples) 
+# [PhytoJS Samples for NodeJS](https://github.com/rondinif/phytojs/tree/master/samples) 
 There are examples that use both `require` and `import` to reference the PhytoJS servive module. 
 - UMD (Universal Module Definition)
     - `AMD` and `CJS` (`CommonJS`) are both compatible with `UMD`
 - ESM / ES6 (ECMAScript.next and TC39 Module Definition)
-# [PhytoJS Samples for the browser](https://github.com/rondinif/docs)
+# [PhytoJS Samples for the browser](https://github.com/rondinif/phytojs/tree/master/docs)
 ## Live [Demo of PhytoJS running in the browser](https://rondinif.github.io/phytojs/mvc)
 
 ### Contributing

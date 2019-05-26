@@ -1,0 +1,28 @@
+language: node_js
+node_js:
+  - 8
+  - 10
+  - 11
+  - 12
+  - node
+
+env:
+  - IS_UNDER_TEST=true
+  - IS_LOG_SILENT=true
+  - IS_LOG_VERBOSE=false
+
+install:
+  - npm install
+
+script:
+  - npm clean:prepare:cover
+
+after_success:
+  - NODE_ENV=production npm run build
+  - npm run coveralls
+  - semantic-release
+
+notifications:
+  email: true
+
+sudo: false
