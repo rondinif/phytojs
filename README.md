@@ -1,7 +1,8 @@
 # PhytoJS: @rondinif/phytojs
-
+[![Travis build status](http://img.shields.io/travis/rondinif/phytojs/master.svg?style=flat-square)](https://travis-ci.org/rondinif/phytojs)
 [![Coveralls](https://img.shields.io/coveralls/rondinif/phytojs.svg?style=flat-square)](https://coveralls.io/github/rondinif/phytojs)
 [![NPM version](https://img.shields.io/npm/v/@rondinif/phytojs.svg?style=flat-square)](https://www.npmjs.org/package/@rondinif/phytojs)
+[![Twitter Follow](https://img.shields.io/twitter/follow/rondinif.svg?style=social&label=Follow)](https://twitter.com/rondinif)
 
 
 A modern javascript library to search about plants on open data
