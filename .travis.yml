@@ -1,9 +1,6 @@
 language: node_js
 node_js:
-  - 8
-  - 10
   - 11
-  - 12
   - node
 
 env:
@@ -18,9 +15,7 @@ script:
   - npm clean:prepare:cover
 
 after_success:
-  - NODE_ENV=production npm run build
   - npm run coveralls
-  - semantic-release
 
 notifications:
   email: true
