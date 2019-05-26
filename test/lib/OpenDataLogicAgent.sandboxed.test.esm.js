@@ -9,7 +9,7 @@ import { config } from '../../esm/config'
 import { logconfig } from '../../esm/logconfig'
 const logger = new Log(logconfig);
 
-import { Phyto } from '../../esm/index';
+import { Phyto } from '../../esm/phyto';
 
 // "wild" | "dryrun" | "record" | "lockdown"
 var nocktest = tapeNock(test,

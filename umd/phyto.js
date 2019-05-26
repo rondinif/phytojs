@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('../esm/config'), require('../esm/logconfig'), require('../esm/log')) :
-  typeof define === 'function' && define.amd ? define(['exports', '../esm/config', '../esm/logconfig', '../esm/log'], factory) :
-  (global = global || self, factory(global.phyto = {}, global.config, global.logconfig, global.log));
-}(this, function (exports, config, logconfig, log) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('../esm/log')) :
+  typeof define === 'function' && define.amd ? define(['exports', '../esm/log'], factory) :
+  (global = global || self, factory(global.phyto = {}, global.log));
+}(this, function (exports, log) { 'use strict';
 
   // DIP: export Higher-order function factories : each of them returns a function as its result.
 
@@ -74,7 +74,7 @@
     const uri = `${getWdEndpointUri({ config, log })}?action=query&format=json&origin=*&list=search&srsearch=${name}&srlimit=500`;
     log.debug(uri);
     const headers = { 'Accept': 'application/json' };
-    // ritorna la promise ottenta dal modulo di gestione delle richieste http asincone verso opendata
+    // ritorna la promise ottenta dal modulo di gestione delle richieste http asincrone verso opendata
     // return OpenDataAsyncRequest.getPromiseOfWikiDataApiResults( uri, headers );
     return ff(uri, headers);
   }
@@ -226,14 +226,10 @@
             let specieArticle;
             try {
               const sparqlQueryArticle = await getPromiseOfSparqlGetSpecieArticleByEntityId({ ffSparql, config, log }, wdEntity);
-              try {
-                specieArticle = sparqlQueryArticle.results.bindings[0].article.value;
-                log.info(specieArticle);
-              } catch (e) {
-                log.warn(`specieArticle #ND [${e.message}]`);
-              }
-            } catch (eo) {             
-              log.error(eo.message);  // UNCOVERED ( intentionally left for DEFENSIVE PROGRAMMING )
+              specieArticle = sparqlQueryArticle.results.bindings[0].article.value;
+              log.info(specieArticle);
+            } catch (e) {
+              log.warn(`specieArticle #ND [${e.message}]`);
             }
 
             entities[i] = {
@@ -255,7 +251,7 @@
             name: responseOfPlantsSearchedByAnyName.name,
             plants: entities
           });
-        })().catch(e => log.debug("loopWDEntities Caught Error: " + e)); // UNCOVERED ( intentionally left for DEFENSIVE PROGRAMMING )
+        })(); // .catch(e => log.debug("loopWDEntities Caught Error: " + e)); // UNCOVERED ( intentionally left for DEFENSIVE PROGRAMMING )
       }); // closing res.then
     });
   }
@@ -274,23 +270,21 @@
       * @param {Function} config
       * @param {Function} logger
       */
-      constructor(fetch, config$1, log$1) {
-  //      let effectiveConfig = (typeof config == 'undefined') ? defaultConfig : config;
-  //      let effectiveLog = (typeof log == 'undefined') ? new DefaultLog(logconfig) : log; 
-        let effectiveConfig = (typeof config$1 == 'undefined') ? (typeof config.config == undefined) ? {isUnderTest: () => false } : config.config  : config$1;
-        let effectiveLog = (typeof log$1 == 'undefined') ? new log.Log((typeof logconfig.logconfig == undefined) ? {isLogVerbose: () => false, isLogSilent: () => true } : logconfig.logconfig) : log$1; 
+      constructor(fetch, config, log$1, logconfig) {
+        this._effectiveConfig = (typeof config == 'undefined') ? {isUnderTest: () => false } : config;
+        this._effectiveLog = (typeof log$1 == 'undefined') ? new log.Log((typeof logconfig == 'undefined') ? {isLogVerbose: () => false, isLogSilent: () => true } : logconfig) : log$1; 
 
 
-        const _ff = makeGetPromiseOfWikiDataApiResults(fetch, effectiveLog);
-        const _ffSparql = makeGetPromiseOfSparqlResults(fetch, effectiveLog);
+        const _ff = makeGetPromiseOfWikiDataApiResults(fetch, this._effectiveLog);
+        const _ffSparql = makeGetPromiseOfSparqlResults(fetch, this._effectiveLog);
         
-        this._wdSearchByAnyName = openDataPromisesFactories.makeWdSearchByAnyName(_ff, effectiveConfig, effectiveLog);
-        this._wdPlantsByAnyName = openDataPromisesFactories.makeWdPlantsByAnyName(_ff, effectiveConfig, effectiveLog);
-        this._resolvedPlantsByName = openDataPromisesFactories.makeResolvedPlantsByName(_ff, _ffSparql, effectiveConfig, effectiveLog);
-        this._sparqlScientificNameById = openDataPromisesFactories.makeSparqlScientificNameById( _ffSparql, effectiveConfig, effectiveLog);
+        this._wdSearchByAnyName = openDataPromisesFactories.makeWdSearchByAnyName(_ff, this._effectiveConfig, this._effectiveLog);
+        this._wdPlantsByAnyName = openDataPromisesFactories.makeWdPlantsByAnyName(_ff, this._effectiveConfig, this._effectiveLog);
+        this._resolvedPlantsByName = openDataPromisesFactories.makeResolvedPlantsByName(_ff, _ffSparql, this._effectiveConfig, this._effectiveLog);
+        this._sparqlScientificNameById = openDataPromisesFactories.makeSparqlScientificNameById( _ffSparql, this._effectiveConfig, this._effectiveLog);
 
-        this._wdEndpointUri = openDataEndpointFactories.makeWdEndpointUri(effectiveConfig, effectiveLog);
-        this._sparqlEndpointUri = openDataEndpointFactories.makeSparqlEndpointUri(effectiveConfig, effectiveLog);
+        this._wdEndpointUri = openDataEndpointFactories.makeWdEndpointUri(this._effectiveConfig, this._effectiveLog);
+        this._sparqlEndpointUri = openDataEndpointFactories.makeSparqlEndpointUri(this._effectiveConfig, this._effectiveLog);
       }
 
       // SECTION which concerns: `openDataPromisesFactories`  
@@ -342,6 +336,21 @@
      getWikiDataApiEndpointUri() {
           return this._wdEndpointUri(); 
       }
+
+      /**
+      * @return {object}
+      */
+     config() {
+      return this._effectiveConfig; 
+     }
+
+      /**
+      * @return {object}
+      */
+     logger() {
+      console.log(`####:${this._effectiveLog}`);   
+      return this._effectiveLog; 
+     }
 
   }
 

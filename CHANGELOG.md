@@ -1,3 +1,27 @@
+##TODO PRIMA DI CHIUDERE LA # 1.2.0 
+## PhytoJS library improvments
+- 100% automatic tests code coverage
+coverage reported on coveralls:
+- `npm run coveralls` code coverage available at https://coveralls.io/github/rondinif/phytojs
+
+- `esm/index.js` discarded as the new more coherent name `esm/phyto.js`
+package.json:
+``` json
+  "main": "umd/phyto.js",
+  "module": "esm/phytojs.js",
+```
+
+- Commit conventions allow our team to add more semantic meaning to our git history. @see rules in: `commitlint.config.js`
+
+## sample web app improvments
+demofeat:(mobile-first) + responsive design
+demofeat:(demo) + pure css on page waiting animation 
+removed from main beacuse of browser compatibility 
+  // import { config } from '../esm/config'
+  // import { logconfig } from '../esm/logconfig'
+
+  `npm run test-main` replace `npm run test-index`
+ 
 # 1.1.0 
 ## Include sample web app 
 In the ./docs.mvc folder an essential example application is now available.

@@ -70,7 +70,7 @@ function getPromiseOfWikiDataApiActionQuerySearchByName({ ff, config, log }, nam
   const uri = `${getWdEndpointUri({ config, log })}?action=query&format=json&origin=*&list=search&srsearch=${name}&srlimit=500`;
   log.debug(uri);
   const headers = { 'Accept': 'application/json' };
-  // ritorna la promise ottenta dal modulo di gestione delle richieste http asincone verso opendata
+  // ritorna la promise ottenta dal modulo di gestione delle richieste http asincrone verso opendata
   // return OpenDataAsyncRequest.getPromiseOfWikiDataApiResults( uri, headers );
   return ff(uri, headers);
 }

@@ -46,7 +46,7 @@ function getPromiseOfWikiDataApiActionQuerySearchByName({ ff, config, log }, nam
   const uri = `${getWdEndpointUri({ config, log })}?action=query&format=json&origin=*&list=search&srsearch=${name}&srlimit=500`;
   log.debug(uri);
   const headers = { 'Accept': 'application/json' };
-  // ritorna la promise ottenta dal modulo di gestione delle richieste http asincone verso opendata
+  // ritorna la promise ottenta dal modulo di gestione delle richieste http asincrone verso opendata
   // return OpenDataAsyncRequest.getPromiseOfWikiDataApiResults( uri, headers );
   return ff(uri, headers);
 }
@@ -198,14 +198,10 @@ function getPromiseOfPlantResolvedByOpendataByName({ ff, ffSparql, config, log }
           let specieArticle;
           try {
             const sparqlQueryArticle = await getPromiseOfSparqlGetSpecieArticleByEntityId({ ffSparql, config, log }, wdEntity);
-            try {
-              specieArticle = sparqlQueryArticle.results.bindings[0].article.value;
-              log.info(specieArticle);
-            } catch (e) {
-              log.warn(`specieArticle #ND [${e.message}]`);
-            }
-          } catch (eo) {             
-            log.error(eo.message);  // UNCOVERED ( intentionally left for DEFENSIVE PROGRAMMING )
+            specieArticle = sparqlQueryArticle.results.bindings[0].article.value;
+            log.info(specieArticle);
+          } catch (e) {
+            log.warn(`specieArticle #ND [${e.message}]`);
           }
 
           entities[i] = {
@@ -227,7 +223,7 @@ function getPromiseOfPlantResolvedByOpendataByName({ ff, ffSparql, config, log }
           name: responseOfPlantsSearchedByAnyName.name,
           plants: entities
         });
-      })().catch(e => log.debug("loopWDEntities Caught Error: " + e)); // UNCOVERED ( intentionally left for DEFENSIVE PROGRAMMING )
+      })(); // .catch(e => log.debug("loopWDEntities Caught Error: " + e)); // UNCOVERED ( intentionally left for DEFENSIVE PROGRAMMING )
     }); // closing res.then
   });
 }

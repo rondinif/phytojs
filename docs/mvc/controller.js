@@ -107,54 +107,25 @@ Controller.prototype.phytoResolve = function(name) {
   log.trace = log.log;
   const config = { isUnderTest: () => false };
   const _ = new Phyto(fetch, config, log);
-
+  
+  that.view.render('loaderBlockVisibility', {visible: true})
   _.resolvedPlantsByName(name).then(async res => {
+    /* res: @see https://github.com/rondinif/phytojs/tree/master/test/fixture/lib/OpenDataLogicAgent/resolvedPlantsByName for schema and sample data  */
       const plants = res.plants.map((plant) => {
               that.model.createPlant(plant, () => {
                 that.view.render('clearNewPhyto')
                 that._filter(true)
               })  
-
           return { plant };
           });
-      // console.log(titles);
+      that.view.render('loaderBlockVisibility', {visible: false})
+      // console.log(plants);
   }).catch(error => {
       console.error(`generic error: ${error} \n searching for ${name || 'nothing'}`)
+      that.view.render('loaderBlockVisibility', {visible: false})
+      // that.view.render('errorBlockVisibility', {visible: true})
   });        
 
-  /*
-  const result = {
-    "name": "pomodoro",
-    "plants": [
-        {
-            "wdEntityId": "Q23501",
-            "wdPageId": 26885,
-            "wdSnippet": "species of plant",
-            "scientificName": "Solanum lycopersicum",
-            "taxonRankId": "http://www.wikidata.org/entity/Q7432",
-            "taxonRankLabel": "species",
-            "specieArticle": "https://species.wikimedia.org/wiki/Solanum_lycopersicum",
-            "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Raj%C4%8De1.jpg"
-        },
-        {
-            "wdEntityId": "Q4930177",
-            "wdPageId": 4710978,
-            "wdSnippet": "cultivar of tomato with high levels of anthocyanins in the skin or in the flesh",
-            "scientificName": "#ND",
-            "taxonRankId": "#ND",
-            "taxonRankLabel": "#ND",
-            "image": "http://commons.wikimedia.org/wiki/Special:FilePath/BlueTomato.jpg"
-        }
-      ]};     
-      result.plants.forEach((plant, index) => {
-        console.log(`Controller.phytoResolve plants[${index}]: ${JSON.stringify(plant)}`)
-        that.model.createPlant(plant, () => {
-          that.view.render('clearNewPhyto')
-          that._filter(true)
-        })
-      }); // end for
-      
-      */
   }
 
 /*

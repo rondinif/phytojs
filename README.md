@@ -1,4 +1,9 @@
 # PhytoJS: @rondinif/phytojs
+
+[![Coveralls](https://img.shields.io/coveralls/rondinif/phytojs.svg?style=flat-square)](https://coveralls.io/github/rondinif/phytojs)
+[![NPM version](https://img.shields.io/npm/v/@rondinif/phytojs.svg?style=flat-square)](https://www.npmjs.org/package/@rondinif/phytojs)
+
+
 A modern javascript library to search about plants on open data
 - The prefix [phyto-](https://en.wiktionary.org/wiki/phyto-) , comes from Ancient Greek φυτόν (phutón, “plant”), is used when something is **pertaining** to or derived from **plants**.
 - [js](https://en.wiktionary.org/wiki/js) is the abbreviation of **javascript**. 
@@ -10,7 +15,7 @@ npm i @rondinif/phytojs --save
 ## Usage
 see below at the examples section...
 
-## Develop
+## Development
 
 Clone the package and install the npm dependencies with `npm i`.
 
@@ -20,7 +25,7 @@ cd phytojs
 npm i
 ```
 
-### Build
+### Build & Test & Coverage
 ``` bash
 npm run clean:prepare:cover
 ```
@@ -30,7 +35,7 @@ npm run clean:prepare:cover
 ``` bash
 npm test
 # to execute specific test suites: 
-npm run test-index
+npm run test-main
 npm run test-config
 npm run test-config-stubbed
 npm run test-odla

@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <title>PhytoJS</title>
     <script src="bootstrap.js" type="module"></script>
-    <link rel=stylesheet href="phytoapp.css">
     <link rel=stylesheet href="app.css">
+    <link rel=stylesheet href="phytoapp.css">
+    <link rel=stylesheet href="loader.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -14,7 +15,8 @@
 
     <section class="nosupport" hidden>
         <h4>Apologies.. your browser doesn't support ES Modules. </h4>
-        <p>You <a href="https://github.com/rondinif/phytojs/blob/master/docs/README.md">may be able to enable them with a flag</a>.
+        <p>You <a href="https://github.com/rondinif/phytojs/blob/master/docs/README.md">may be able to enable them with
+                a flag</a>.
     </section>
 
     <script nomodule>
@@ -32,10 +34,22 @@
         <header class="header">
             <h1>PhytoJS</h1>
             <input class="new-phyto" placeholder="What plant are you searching for?" autofocus>
-        </header>
-        <section class="main">
+
+            <div class="loader" style="display: none">
+                <div class="duo duo1">
+                    <div class="dot dot-a"></div>
+                    <div class="dot dot-b"></div>
+                </div>
+                <div class="duo duo2">
+                    <div class="dot dot-a"></div>
+                    <div class="dot dot-b"></div>
+                </div>
+            </div>
+
             <input class="toggle-all" type="checkbox">
             <label for="toggle-all">Mark all as complete</label>
+        </header>
+        <section class="main">
             <ul class="phyto-list"></ul>
         </section>
         <footer class="footer">
@@ -57,7 +71,8 @@
     <section class="graph-area-container"></section>
     <footer class="info">
         <p>Created by <a href="http://twitter.com/rondinif">Franco Rondini</a>
-            <p><a href="https://github.com/rondinif/phytojs/blob/master/docs/README.md">repo: https://github.com/rondinif/phytojs#readme</a>
+            <p><a href="https://github.com/rondinif/phytojs/blob/master/docs/README.md">repo:
+                    https://github.com/rondinif/phytojs#readme</a>
     </footer>
 </body>
 
