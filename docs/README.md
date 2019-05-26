@@ -1,5 +1,5 @@
 # PhytoJS Samples for the web browser
-[./docs](https://github.com/rondinif/phytojs/tree/master/docs) has *use-cases* for the web browser, if you're looking for examples to run in nodejs please look at the [./docs](https://github.com/rondinif/phytojs/tree/master/docs) folder; if you're looking for the documentation of the PhytoJS service component please look at the project [./README.md](https://github.com/rondinif/phytojs/blob/master/README.md)  
+[./docs](https://github.com/rondinif/phytojs/tree/master/docs) has *use-cases* for the web browser, if you're looking for examples to run in nodejs please look at the [./samples](https://github.com/rondinif/phytojs/tree/master/samples) folder; if you're looking for the documentation of the PhytoJS service component please look at the project [./README.md](https://github.com/rondinif/phytojs/blob/master/README.md)  
 
 ## Vanillajs (ECMAScript.next) MVC Example
 [Live Demo](https://rondinif.github.io/rondinif/phytojs)

@@ -1,5 +1,5 @@
 # PhytoJS Samples for NodeJS
-[./samples](../samples) has *use-cases* for nodejs, if you're looking for examples to run in browsers please look at the [./docs](../docs folder.  
+[./samples](../samples) has *use-cases* for nodejs, if you're looking for examples to run in browsers please look at the [./docs](../docs) folder.  
 
 ### CLI Samples
 #### UMD (Universal Module Definition) sample
