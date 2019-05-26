@@ -74,14 +74,14 @@ function getWdEndpointUri({ config, log }) {
 /* wdSearchByAnyName:
 dato un nome generico nome di pianta espresso in qualsiasi lingua
 ritorna una lista di `wikidata entities`
-[1.0.1 BUG FIX]: added `origin=*`
+[v1.0.1 BUG FIX]: added `origin=*` =>  merged in [v1.1.0]
 */
 function getPromiseOfWikiDataApiActionQuerySearchByName({ ff, config, log }, name) {
   name = (name === undefined) ? "" : name;
   const uri = `${getWdEndpointUri({ config, log })}?action=query&format=json&origin=*&list=search&srsearch=${name}&srlimit=500`;
   log.debug(uri);
   const headers = { 'Accept': 'application/json' };
-  // ritorna la promise ottenta dal modulo di gestione delle richieste http asincone verso opendata
+  // ritorna la promise ottenta dal modulo di gestione delle richieste http asincrone verso opendata
   // return OpenDataAsyncRequest.getPromiseOfWikiDataApiResults( uri, headers );
   return ff(uri, headers);
 }

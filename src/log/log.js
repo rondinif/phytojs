@@ -42,6 +42,8 @@ export class Log {
         this._info = logFactory.makeInfoFunction(config);
         this._warn = logFactory.makeWarnFunction(config);
         this._error = logFactory.makeErrorFunction(config);
+
+        this._config = config;
     }
   
     trace(...args) {
@@ -64,28 +66,8 @@ export class Log {
         return this._error(...args);
       }
 
-}
-
-/*
-export const log = {
-    trace: (...args) => {
-        console.trace(...args);
-    },
-
-    debug: (...args) => {
-        console.debug(...args);
-    },
-
-    info: (...args) => {
-        console.info(...args);
-    },
-
-    warn: (...args) => {
-        console.warn(...args);
-    },
-
-    error: (...args) => {
-        console.error(...args)
+    getLogConfig(...args) {
+        return this._config;
     }
-};
-*/
+
+}

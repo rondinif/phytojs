@@ -1,9 +1,9 @@
 # PhytoJS Samples for the web browser
-[./docs](../docs) has *use-cases* for the web browser, if you're looking for examples to run in nodejs please look at the [./docs](../docs) folder; if you're looking for the documentation of the PhytoJS service component please look at the project [./README.md](../README.md)  
+[./docs](https://github.com/rondinif/phytojs/tree/master/docs) has *use-cases* for the web browser, if you're looking for examples to run in nodejs please look at the [./docs](https://github.com/rondinif/phytojs/tree/master/docs) folder; if you're looking for the documentation of the PhytoJS service component please look at the project [./README.md](https://github.com/rondinif/phytojs/blob/master/README.md)  
 
 ## Vanillajs (ECMAScript.next) MVC Example
 [Live Demo](https://rondinif.github.io/rondinif/phytojs)
-[demo sources](./docs/mvc)
+[demo sources](https://github.com/rondinif/phytojs/tree/master/docs/mvc)
 
 Will work in your browser in these cases:
 
@@ -38,7 +38,7 @@ This example was created by [rondinif](https://github.com/rondinif) importing th
 under [MIT LICENCE](https://github.com/kentcdodds/es6-todomvc/blob/master/LICENSE) 
 
 ### Contributing
-[we encourage contributions from everyone](../.github/CONTRIBUTING.md)
+[we encourage contributions from everyone](https://github.com/rondinif/phytojs/blob/master/.github/CONTRIBUTING.md)
 <!--
 ## JS 
 ./bootstrap.js

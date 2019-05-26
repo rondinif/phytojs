@@ -105,7 +105,7 @@ export default [
         ],
         input: 'src/main.js',
         output: {
-            file: 'esm/index.js',
+            file: 'esm/phyto.js',
             format: 'esm'
         }
     }

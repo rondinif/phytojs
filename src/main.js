@@ -8,8 +8,7 @@ import { config as defaultConfig } from './config/config';
 import { logconfig } from './config/logconfig';
 import { Log as DefaultLog } from './log/log';
 */ 
-import { config } from '../esm/config'
-import { logconfig } from '../esm/logconfig'
+
 import { Log } from '../esm/log' 
 
 // https://humanwhocodes.com/blog/2019/01/stop-using-default-exports-javascript-module/
@@ -26,23 +25,21 @@ export class Phyto {
     * @param {Function} config
     * @param {Function} logger
     */
-    constructor(fetch, config$1, log) {
-//      let effectiveConfig = (typeof config == 'undefined') ? defaultConfig : config;
-//      let effectiveLog = (typeof log == 'undefined') ? new DefaultLog(logconfig) : log; 
-      let effectiveConfig = (typeof config$1 == 'undefined') ? (typeof config == undefined) ? {isUnderTest: () => false } : config  : config$1;
-      let effectiveLog = (typeof log == 'undefined') ? new Log((typeof logconfig == undefined) ? {isLogVerbose: () => false, isLogSilent: () => true } : logconfig) : log; 
+    constructor(fetch, config, log, logconfig) {
+      this._effectiveConfig = (typeof config == 'undefined') ? {isUnderTest: () => false } : config;
+      this._effectiveLog = (typeof log == 'undefined') ? new Log((typeof logconfig == 'undefined') ? {isLogVerbose: () => false, isLogSilent: () => true } : logconfig) : log; 
 
 
-      const _ff = makeGetPromiseOfWikiDataApiResults(fetch, effectiveLog);
-      const _ffSparql = makeGetPromiseOfSparqlResults(fetch, effectiveLog);
+      const _ff = makeGetPromiseOfWikiDataApiResults(fetch, this._effectiveLog);
+      const _ffSparql = makeGetPromiseOfSparqlResults(fetch, this._effectiveLog);
       
-      this._wdSearchByAnyName = openDataPromisesFactories.makeWdSearchByAnyName(_ff, effectiveConfig, effectiveLog);
-      this._wdPlantsByAnyName = openDataPromisesFactories.makeWdPlantsByAnyName(_ff, effectiveConfig, effectiveLog);
-      this._resolvedPlantsByName = openDataPromisesFactories.makeResolvedPlantsByName(_ff, _ffSparql, effectiveConfig, effectiveLog);
-      this._sparqlScientificNameById = openDataPromisesFactories.makeSparqlScientificNameById( _ffSparql, effectiveConfig, effectiveLog);
+      this._wdSearchByAnyName = openDataPromisesFactories.makeWdSearchByAnyName(_ff, this._effectiveConfig, this._effectiveLog);
+      this._wdPlantsByAnyName = openDataPromisesFactories.makeWdPlantsByAnyName(_ff, this._effectiveConfig, this._effectiveLog);
+      this._resolvedPlantsByName = openDataPromisesFactories.makeResolvedPlantsByName(_ff, _ffSparql, this._effectiveConfig, this._effectiveLog);
+      this._sparqlScientificNameById = openDataPromisesFactories.makeSparqlScientificNameById( _ffSparql, this._effectiveConfig, this._effectiveLog);
 
-      this._wdEndpointUri = openDataEndpointFactories.makeWdEndpointUri(effectiveConfig, effectiveLog);
-      this._sparqlEndpointUri = openDataEndpointFactories.makeSparqlEndpointUri(effectiveConfig, effectiveLog);
+      this._wdEndpointUri = openDataEndpointFactories.makeWdEndpointUri(this._effectiveConfig, this._effectiveLog);
+      this._sparqlEndpointUri = openDataEndpointFactories.makeSparqlEndpointUri(this._effectiveConfig, this._effectiveLog);
     }
 
     // SECTION which concerns: `openDataPromisesFactories`  
@@ -94,5 +91,20 @@ export class Phyto {
    getWikiDataApiEndpointUri() {
         return this._wdEndpointUri(); 
     }
+
+    /**
+    * @return {object}
+    */
+   config() {
+    return this._effectiveConfig; 
+   }
+
+    /**
+    * @return {object}
+    */
+   logger() {
+    console.log(`####:${this._effectiveLog}`);   
+    return this._effectiveLog; 
+   }
 
 }

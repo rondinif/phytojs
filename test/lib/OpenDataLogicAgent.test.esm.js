@@ -33,7 +33,7 @@ const resolvedPlantsByName = openDataPromisesFactories.makeResolvedPlantsByName(
 const sparqlScientificNameById = openDataPromisesFactories.makesparqlScientificNameById(ffSparql, config, log);
 */
 
-import { Phyto } from '../../esm/index';
+import { Phyto } from '../../esm/phyto';
 const phyto = new Phyto(fetch, config, logger);
 
 // "wild" | "dryrun" | "record" | "lockdown"

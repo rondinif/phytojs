@@ -5,7 +5,7 @@ import chalk from 'chalk';
 
 import logger from 'roarr';
 import { config } from '../esm/config'
-import { Phyto } from '../esm/index';
+import { Phyto } from '../esm/phyto';
 
 const phyto = new Phyto(fetch, config, logger);
 

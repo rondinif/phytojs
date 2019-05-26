@@ -107,14 +107,14 @@ Template.prototype.itemCounter = function(activePhyta) {
 }
 
 /**
- * Updates the text within the "Clear completed" button
+ * Updates the text within the "Clear selected" button
  *
- * @param  {[type]} completedTodos The number of completed todos.
+ * @param  {[type]} completedPhyta The number of plants selected for deletion.
  * @returns {string} String containing the count
  */
 Template.prototype.clearCompletedButton = function(completedPhyta) {
   if (completedPhyta > 0) {
-    return 'Clear completed'
+    return 'Clear selected'
   } else {
     return ''
   }
