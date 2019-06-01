@@ -18,7 +18,8 @@ const fetch = require('isomorphic-fetch');
 // const log = new Log(logconfig);
 // const phyto = new Phyto(fetch); // , config, log);
 
-const phyto = new require('../umd/phyto').Phyto(fetch); // , config, log);
+const lib = require('../umd/phyto');
+const phyto = new lib.Phyto(fetch); // , config, log);
 
 
 const padr = (s, n) => { return `${s}${(n - s.length > 0) ? ' '.repeat(n - s.length) : ''}` };
