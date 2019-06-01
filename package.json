@@ -1,6 +1,6 @@
 {
   "name": "@rondinif/phytojs",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A modern javascript library to search about plants on open data",
   "keywords": [
     "botanica",
