@@ -5,6 +5,8 @@
 [Live Demo](https://rondinif.github.io/rondinif/phytojs)
 [demo sources](https://github.com/rondinif/phytojs/tree/master/docs/mvc)
 
+[![demo video](http://img.youtube.com/vi/kzvMT4TYiZk/0.jpg)](https://youtu.be/kzvMT4TYiZk "demo")
+
 Will work in your browser in these cases:
 
 <ul>

@@ -6,17 +6,24 @@ run with:
 tested with:
  $ node --version
     v11.10.0
+note: 
+this sample should give errore when `.env` has inconsistent configuration
+for example: Error: log misconfiguration : isLogVerbose:true && isLogSilent:true
 */ 
 
 const chalk = require('chalk');
 const fetch = require('isomorphic-fetch');
 // const log = require('roarr').default;
-const Log = require('../umd/log.js').Log;
 const config = require('../umd/config.js').config;
+
 const logconfig = require('../umd/logconfig.js').logconfig;
-const Phyto = require('../umd/phyto').Phyto;
-const log = new Log(logconfig);
-const phyto = new Phyto(fetch, config, log);
+const loglib = require('../umd/log.js');
+const log = new loglib.Log(logconfig);
+
+log.error('haha');
+
+const lib = require('../umd/phyto');
+const phyto = new lib.Phyto(fetch, config, log);
 
 const padr = (s, n) => { return `${s}${(n - s.length > 0) ? ' '.repeat(n - s.length) : ''}` };
 
