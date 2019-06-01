@@ -1,4 +1,8 @@
-##TODO PRIMA DI CHIUDERE LA # 1.2.0 
+# 1.2.1 
+## Fixed inconsitent auto-generated references in umd
+see diff in a1fac62c8757926c579f0882ded17aba3fcd7e45
+
+# 1.2.0 
 ## PhytoJS library improvments
 - 100% automatic tests code coverage
 coverage reported on coveralls:
