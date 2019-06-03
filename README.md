@@ -1,9 +1,18 @@
 # PhytoJS: @rondinif/phytojs
-[![Travis build status](http://img.shields.io/travis/rondinif/phytojs/master.svg?style=flat-square)](https://travis-ci.org/rondinif/phytojs)
+[![Travis build status](https://img.shields.io/travis/rondinif/phytojs/master.svg?style=flat-square)](https://travis-ci.org/rondinif/phytojs)
 [![Coveralls](https://img.shields.io/coveralls/rondinif/phytojs.svg?style=flat-square)](https://coveralls.io/github/rondinif/phytojs)
 [![NPM version](https://img.shields.io/npm/v/@rondinif/phytojs.svg?style=flat-square)](https://www.npmjs.org/package/@rondinif/phytojs)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Twitter Follow](https://img.shields.io/twitter/follow/rondinif.svg?style=social&label=Follow)](https://twitter.com/rondinif)
 
+
+[![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=rondinif:phytojs-js&metric=alert_status)](https://sonarcloud.io/dashboard?id=rondinif:phytojs-js)
+[![Sonarcloud coverage](https://sonarcloud.io/api/project_badges/measure?project=rondinif:phytojs-js&metric=coverage)](https://sonarcloud.io/dashboard?id=rondinif:phytojs-js)
+[![Sonarcloud sqale_index](https://sonarcloud.io/api/project_badges/measure?project=rondinif:phytojs-js&metric=sqale_index)](https://sonarcloud.io/dashboard?id=rondinif:phytojs-js)
+
+[![Sonarcloud security_rating](https://sonarcloud.io/api/project_badges/measure?project=rondinif:phytojs-js&metric=security_rating)](https://sonarcloud.io/dashboard?id=rondinif:phytojs-js)
+[![Sonarcloud sqale_rating](https://sonarcloud.io/api/project_badges/measure?project=rondinif:phytojs-js&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=rondinif:phytojs-js)
+[![Sonarcloud reliability_rating](https://sonarcloud.io/api/project_badges/measure?project=rondinif:phytojs-js&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=rondinif:phytojs-js)
 
 A modern javascript library to search about plants on open data
 - The prefix [phyto-](https://en.wiktionary.org/wiki/phyto-) , comes from Ancient Greek φυτόν (phutón, “plant”), is used when something is **pertaining** to or derived from **plants**.

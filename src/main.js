@@ -1,7 +1,7 @@
 "use strict"
 //TODO the boilerplate should be auto-generated avoiding human errors
-import {makeGetPromiseOfWikiDataApiResults, makeGetPromiseOfSparqlResults} from './lib/OpenDataAsyncFactories.mjs';
-import { openDataPromisesFactories, openDataEndpointFactories } from './lib/OpenDataLogicAgent.mjs';  
+import {makeGetPromiseOfWikiDataApiResults, makeGetPromiseOfSparqlResults} from './lib/OpenDataAsyncFactories';
+import { openDataPromisesFactories, openDataEndpointFactories } from './lib/OpenDataLogicAgent';  
 
 /*
 import { config as defaultConfig } from './config/config';
