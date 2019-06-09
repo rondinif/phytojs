@@ -1,4 +1,6 @@
+.scannerwork
 .coveralls.yml
+.eslint
 _private
 _config
 

@@ -1,7 +1,7 @@
 {
   "name": "@rondinif/phytojs",
-  "version": "1.2.1",
-  "description": "A modern javascript library to search about plants on open data",
+  "version": "1.3.0",
+  "description": "A modern javascript toolkit to search about plants on open data",
   "keywords": [
     "botanica",
     "botanical",
@@ -32,8 +32,10 @@
   "main": "umd/phyto.js",
   "module": "esm/phyto.js",
   "scripts": {
-    "prepare": "rollup --config",
+    "remediations": "sed -i.backup 's/\\.\\.\\/esm\\//\\.\\.\\/umd\\//' ./umd/phyto.js",
+    "prepare": "rollup --config && npm run remediations",
     "test": "NODE_ENV=test npx tap test/**/*.test.esm.js",
+    "test:xo": "xo && NODE_ENV=test npx tap test/**/*.test.esm.js",
     "cover": "NODE_ENV=test npx tap test/**/*.test.esm.js --cov --coverage-report=lcov",
     "coveralls": "NODE_ENV=test npm run cover && cat ./coverage/lcov.info | coveralls",
     "test-spec": "NODE_ENV=test npx tap test/**/*.test.esm.js | node_modules/.bin/tap-spec",
@@ -45,13 +47,14 @@
     "test-odla-stubbed": "NODE_ENV=test node -r esm test/lib/OpenDataLogicAgent.stubbed.test.esm.js | node_modules/.bin/tap-spec",
     "test-odla-sandboxed": "NODE_ENV=test node -r esm test/lib/OpenDataLogicAgent.sandboxed.test.esm.js | node_modules/.bin/tap-spec",
     "cover-odla": "NODE_ENV=test npx tap test/lib/*.test.esm.js --cov --coverage-report=lcov",
-    "sample-umd": "node samples/index.umd.js",
+    "sample-umd": "node samples/index.umd.js && node samples/index.umd.1.js && node samples/index.umd.2.js && node samples/index.umd.3.js",
     "sample-umd-esm": "node -r esm ./samples/index.umd.esm.js",
     "sample-esm": "node -r esm samples/index.esm.js",
     "clean": "rm -rf .nyc_output/ && rm -rf coverage/",
     "clean:prepare": "npm run clean && npm run prepare",
-    "clean:prepare:test": "npm run clean:prepare && npm test",
-    "clean:prepare:cover": "npm run clean:prepare:test && npm run cover",
+    "clean:prepare:test:xo": "npm run clean:prepare && npm run test:xo",
+    "clean:prepare:cover": "npm run clean:prepare:test:xo && npm run cover",
+    "sonar-scanner": "xo --reporter json > .eslint/report.json && sonar-scanner -X",
     "start": "http-server docs/mvc"
   },
   "files": [
@@ -77,7 +80,18 @@
     "tap": "^13.1.2",
     "tap-spec": "^5.0.0",
     "tape": "^4.10.1",
-    "tape-nock": "^1.6.1"
+    "tape-nock": "^1.6.1",
+    "xo": "^0.24.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "xo": {
+		"ignores": [
+      "esm",
+      "umd",
+      "docs",
+      "samples",
+      "script",
+      "test"
+		]
+	}
 }
