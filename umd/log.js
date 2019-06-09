@@ -1,82 +1,87 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (global = global || self, factory(global.log = {}));
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+	typeof define === 'function' && define.amd ? define(['exports'], factory) :
+	(global = global || self, factory(global.log = {}));
 }(this, function (exports) { 'use strict';
 
-  // import { logFactory } from './log.mjs';  
+	// Import { logFactory } from './log.mjs';
 
-  const logFactory = {
-      makeTraceFunction: (config) => {
-          return  (...args) => {
-              if (config.isLogVerbose()) {
-                  console.trace(...args);
-              }
-          }},
-      makeDebugFunction: (config) => {
-          return  (...args) => {
-              if (config.isLogVerbose()) {
-                  console.debug(...args);
-              }
-          }},
-      makeInfoFunction: (config) => {
-          return  (...args) => {
-              if (!config.isLogSilent()) {
-                  console.info(...args);
-              }
-          }},
-      makeWarnFunction: (config) => {
-          return  (...args) => {
-              if (!config.isLogSilent()) {
-                  console.warn(...args);
-              }
-          }},
-      makeErrorFunction: (config) => {
-          return  (...args) => {
-              console.error(...args);
-          }}
-      };
+	const logFactory = {
+		makeTraceFunction: config => {
+			return (...args) => {
+				if (config.isLogVerbose()) {
+					console.trace(...args);
+				}
+			};
+		},
+		makeDebugFunction: config => {
+			return (...args) => {
+				if (config.isLogVerbose()) {
+					console.debug(...args);
+				}
+			};
+		},
+		makeInfoFunction: config => {
+			return (...args) => {
+				if (!config.isLogSilent()) {
+					console.info(...args);
+				}
+			};
+		},
+		makeWarnFunction: config => {
+			return (...args) => {
+				if (!config.isLogSilent()) {
+					console.warn(...args);
+				}
+			};
+		},
+		makeErrorFunction: () => {
+			return (...args) => {
+				console.error(...args);
+			};
+		}
+	};
 
-  class Log {
-      constructor(config) {
-          if ( config.isLogVerbose() && config.isLogSilent() ) {
-              throw new Error(`log misconfiguration : isLogVerbose:${config.isLogVerbose()} && isLogSilent:${config.isLogSilent()}`);
-          }
-          this._trace = logFactory.makeTraceFunction(config);
-          this._debug = logFactory.makeDebugFunction(config);
-          this._info = logFactory.makeInfoFunction(config);
-          this._warn = logFactory.makeWarnFunction(config);
-          this._error = logFactory.makeErrorFunction(config);
+	class Log {
+		constructor(config) {
+			if (config.isLogVerbose() && config.isLogSilent()) {
+				throw new Error(`log misconfiguration : isLogVerbose:${config.isLogVerbose()} && isLogSilent:${config.isLogSilent()}`);
+			}
 
-          this._config = config;
-      }
-    
-      trace(...args) {
-          return this._trace(...args);
-        }
+			this._trace = logFactory.makeTraceFunction(config);
+			this._debug = logFactory.makeDebugFunction(config);
+			this._info = logFactory.makeInfoFunction(config);
+			this._warn = logFactory.makeWarnFunction(config);
+			this._error = logFactory.makeErrorFunction(config);
 
-      debug(...args) {
-          return this._debug(...args);
-        }
-      
-      info(...args) {
-          return this._info(...args);
-        }
+			this._config = config;
+		}
 
-      warn(...args) {
-          return this._warn(...args);
-        }
-        
-      error(...args) {
-          return this._error(...args);
-        }
+		trace(...args) {
+			return this._trace(...args);
+		}
 
-      getLogConfig(...args) {
-          return this._config;
-      }
+		debug(...args) {
+			return this._debug(...args);
+		}
 
-  }
+		info(...args) {
+			return this._info(...args);
+		}
 
-  exports.Log = Log;
+		warn(...args) {
+			return this._warn(...args);
+		}
+
+		error(...args) {
+			return this._error(...args);
+		}
+
+		getLogConfig() {
+			return this._config;
+		}
+	}
+
+	exports.Log = Log;
 
 }));

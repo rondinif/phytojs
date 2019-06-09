@@ -1,6 +1,6 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('../umd/log')) :
-	typeof define === 'function' && define.amd ? define(['exports', '../umd/log'], factory) :
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('../esm/log')) :
+	typeof define === 'function' && define.amd ? define(['exports', '../esm/log'], factory) :
 	(global = global || self, factory(global.phyto = {}, global.log));
 }(this, function (exports, log) { 'use strict';
 

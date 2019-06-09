@@ -20,8 +20,6 @@ const logconfig = require('../umd/logconfig.js').logconfig;
 const loglib = require('../umd/log.js');
 const log = new loglib.Log(logconfig);
 
-log.error('haha');
-
 const lib = require('../umd/phyto');
 const phyto = new lib.Phyto(fetch, config, log);
 

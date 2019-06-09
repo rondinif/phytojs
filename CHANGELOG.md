@@ -1,4 +1,8 @@
-# 1.2.1 
+# 1.3.0 
+- ci(sca): arranged for automated [static code analysis](https://sonarcloud.io/dashboard?id=rondinif%3Aphytojs-js)
+- ci(xo): eslinted with xo
+
+# 1.2.1 - 1.2.3
 ## Fixed inconsitent auto-generated references in umd
 see diff in a1fac62c8757926c579f0882ded17aba3fcd7e45
 
