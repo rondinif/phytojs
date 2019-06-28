@@ -107,10 +107,14 @@ Controller.prototype.phytoResolve = function(name) {
   log.trace = log.log;
   const config = { isUnderTest: () => false };
   const _ = new Phyto(fetch, config, log);
-  
+/*
+  console.log(`fetch: https://${REMOTE_PHYTOJS_API_DOMAIN}/api/HttpTrigger?name=${name}`);
+  fetch(`https://${REMOTE_PHYTOJS_API_DOMAIN}/api/HttpTrigger?name=${name}`).then(body => console.log(body.json())).catch(error => log.error(`ERROR FETCHING DATA: ${error.message}`));
+};
+*/
   that.view.render('loaderBlockVisibility', {visible: true})
   _.resolvedPlantsByName(name).then(async res => {
-    /* res: @see https://github.com/rondinif/phytojs/tree/master/test/fixture/lib/OpenDataLogicAgent/resolvedPlantsByName for schema and sample data  */
+    // res: @see https://github.com/rondinif/phytojs/tree/master/test/fixture/lib/OpenDataLogicAgent/resolvedPlantsByName for schema and sample data
       const plants = res.plants.map((plant) => {
               that.model.createPlant(plant, () => {
                 that.view.render('clearNewPhyto')
@@ -125,8 +129,7 @@ Controller.prototype.phytoResolve = function(name) {
       that.view.render('loaderBlockVisibility', {visible: false})
       // that.view.render('errorBlockVisibility', {visible: true})
   });        
-
-  }
+}
 
 /*
 * Triggers the item editing mode.
