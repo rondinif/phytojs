@@ -25,6 +25,8 @@ npm i @rondinif/phytojs --save
 ## Usage
 see below at the examples section...
 
+are you impatient? ... learn by playing by forking one of these [newest PhytoJS pens](https://codepen.io/search/pens?q=phytojs&page=1&order=newest&depth=everything) or become a PhytoJS ninja by training [PhytoJS and pReact tutorial](https://codepen.io/collection/DPKJKN/) 
+
 ## Development
 
 Clone the package and install the npm dependencies with `npm i`.
@@ -70,7 +72,10 @@ There are examples that use both `require` and `import` to reference the PhytoJS
 - ESM / ES6 (ECMAScript.next and TC39 Module Definition)
 # [PhytoJS Samples for the browser](https://github.com/rondinif/phytojs/tree/master/docs)
 ## Live [Demo of PhytoJS running in the browser](https://rondinif.github.io/phytojs/mvc)
+[video demo available](https://youtu.be/kzvMT4TYiZk) 
 [![demo video](http://img.youtube.com/vi/kzvMT4TYiZk/0.jpg)](https://youtu.be/kzvMT4TYiZk "demo")
+## Play & Learn by these codepens: [PhytoJS & pReact tutorial](https://codepen.io/collection/DPKJKN/)
+.. more pens linked in the [samples for the browser section](https://github.com/rondinif/phytojs/tree/master/docs)
 
 ### Contributing
 Simply [we encourage contributions from everyone](https://github.com/rondinif/phytojs/blob/master/.github/CONTRIBUTING.md)
