@@ -25,7 +25,7 @@ npm i @rondinif/phytojs --save
 ## Usage
 see below at the examples section...
 
-are you impatient? ... learn by playing by forking one of these [newest PhytoJS pens](https://codepen.io/search/pens?q=phytojs&page=1&order=newest&depth=everything) or become a PhytoJS ninja by training [PhytoJS and pReact tutorial](https://codepen.io/collection/DPKJKN/) 
+are you impatient? ... learn by playing by forking one of these [newest PhytoJS pens](https://codepen.io/search/pens?q=phytojs&page=1&order=newest&depth=everything) or become a PhytoJS ninja by training [PhytoJS and pReact tutorial](https://codepen.io/collection/DPKJKN/) , if you want to experience Phyto Js server side you can start live forking [a basic example that shows how to use @rondinif/phytojs nom package in RunKit to get an API endpoint](https://runkit.com/rondinif/phytojs-api)
 
 ## Development
 
@@ -76,6 +76,10 @@ There are examples that use both `require` and `import` to reference the PhytoJS
 [![demo video](http://img.youtube.com/vi/kzvMT4TYiZk/0.jpg)](https://youtu.be/kzvMT4TYiZk "demo")
 ## Play & Learn by these codepens: [PhytoJS & pReact tutorial](https://codepen.io/collection/DPKJKN/)
 .. more pens linked in the [samples for the browser section](https://github.com/rondinif/phytojs/tree/master/docs)
+
+# ServerSide PhytoJS Samples for NodeJS
+- [Trivial Runkit PhytoJs endpoint example](https://runkit.com/rondinif/phytojs-rosmarino) 
+- [PhytoJs Express API endpoint in RunKit](https://runkit.com/rondinif/phytojs-api)
 
 ### Contributing
 Simply [we encourage contributions from everyone](https://github.com/rondinif/phytojs/blob/master/.github/CONTRIBUTING.md)
