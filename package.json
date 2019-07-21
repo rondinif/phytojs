@@ -94,6 +94,7 @@
       "script"
     ],
     "rules": {
+			"unicorn/filename-case": 1,
       "no-use-extend-native/no-use-extend-native": 1,
       "camelcase": 1,
       "import/extensions": 1,

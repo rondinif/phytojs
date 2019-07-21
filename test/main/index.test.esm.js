@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 import test from 'tape';
 import fetch from 'isomorphic-fetch';
 import logger from 'roarr';
