@@ -1,0 +1,10 @@
+{
+    "head": {
+        "vars": [
+            "scientificname"
+        ]
+    },
+    "results": {
+        "bindings": []
+    }
+}

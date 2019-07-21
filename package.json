@@ -40,7 +40,8 @@
     "coveralls": "NODE_ENV=test npm run cover && cat ./coverage/lcov.info | coveralls",
     "test-spec": "NODE_ENV=test npx tap test/**/*.test.esm.js | node_modules/.bin/tap-spec",
     "test-main": "NODE_ENV=test node -r esm test/main/index.test.esm.js | node_modules/.bin/tap-spec",
-    "test-config": "NODE_ENV=test node -r esm test/config/config.esm.js | node_modules/.bin/tap-spec",
+    "test-log": "NODE_ENV=test node -r esm test/log/log.test.esm.js | node_modules/.bin/tap-spec",
+    "test-config": "NODE_ENV=test node -r esm test/config/config.test.esm.js | node_modules/.bin/tap-spec",
     "test-config-stubbed": "NODE_ENV=test node -r esm test/config/config.isUnderTest.stubbed.env.test.esm.js | node_modules/.bin/tap-spec",
     "test-odla": "NODE_ENV=test node -r esm test/lib/OpenDataLogicAgent.test.esm.js | node_modules/.bin/tap-spec",
     "test-odla-special": "NODE_ENV=test node -r esm test/lib/OpenDataLogicAgent.special.test.esm.js | node_modules/.bin/tap-spec",
@@ -90,8 +91,13 @@
       "umd",
       "docs",
       "samples",
-      "script",
-      "test"
-		]
+      "script"
+		],
+		"rules": {
+			"no-use-extend-native/no-use-extend-native": 1,
+			"camelcase": 1,
+			"import/extensions": 1,
+			"import/first": 1
+		}
 	}
 }
