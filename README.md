@@ -25,7 +25,7 @@ npm i @rondinif/phytojs --save
 ## Usage
 see below at the examples section...
 
-are you impatient? ... learn by playing by forking one of these [newest PhytoJS pens](https://codepen.io/search/pens?q=phytojs&page=1&order=newest&depth=everything) or become a PhytoJS ninja by training [PhytoJS and pReact tutorial](https://codepen.io/collection/DPKJKN/) , if you want to experience Phyto Js server side you can start live forking [a basic example that shows how to use @rondinif/phytojs nom package in RunKit to get an API endpoint](https://runkit.com/rondinif/phytojs-api)
+are you impatient? ... learn by playing by forking one of these [newest PhytoJS pens](https://codepen.io/search/pens?q=phytojs&page=1&order=newest&depth=everything) or become a PhytoJS ninja by training [PhytoJS and pReact tutorial](https://codepen.io/collection/DPKJKN/) , if you want to experience Phyto Js server side you can start live forking [a basic example that shows how to use @rondinif/phytojs nom package in RunKit to get an API endpoint](https://runkit.com/rondinif/phytojs-api) or these [six lines of code](https://raw.githubusercontent.com/9llara/phytojs-minimal-node-esm/master/index.js) in [phytojs-minimal-node-esm)](https://github.com/9llara/phytojs-minimal-node-esm) a minimalistic example of PhytoJS usage that runs in NodeJS. 
 
 ## Development
 
