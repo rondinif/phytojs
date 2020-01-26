@@ -14,6 +14,12 @@ WARNING: to avoid circular reference this module **MUST** not import moduled tha
 Coding Conventions: before each configuration a comment SHOULD be written; the comment also shows the names of the environment variables that can influence the effective configuration value. When present this comment MUST be updated also in the config.checker.mjs program.
 */
 
+/**
+ * The default behavior is not to be under test
+ * @constant
+ * @type {boolean}
+ * @default true
+ */
 export const DEFAULT_IS_UNDER_TEST = false;
 
 const castToBoolen = anyValue => {
@@ -43,11 +49,16 @@ const castToBoolen = anyValue => {
 	}
 };
 
+/**
+ * {@link Phyto} default configuration object.
+ * @module
+ * @method
+ * @return {Object}
+ */
 export const config = {
-	/*
-    The test features are enabed
-    affected by .env IS_FILESTORE_WRITING_ENABLED
-    */
+	/**
+		@return {boolean} affected by .env IS_UNDER_TEST if defined or {@link DEFAULT_IS_UNDER_TEST} value
+  */
 	isUnderTest() {
 		return process.env.IS_UNDER_TEST ?
 			castToBoolen(process.env.IS_UNDER_TEST) :
