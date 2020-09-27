@@ -76,7 +76,7 @@
     "proxyquire": "^2.1.0",
     "roarr": "^2.13.0",
     "rollup": "^1.11.0",
-    "rollup-plugin-terser": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2",
     "sinon": "^7.2.7",
     "tap": "^13.1.2",
     "tap-spec": "^5.0.0",
