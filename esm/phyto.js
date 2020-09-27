@@ -194,7 +194,7 @@ function getPromiseOfPlantResolvedByOpendataByName({ff, ffSparql, config, log}, 
 					let scientificName;
 					try {
 						scientificName = sparqlQueryScientificName.results.bindings[0].scientificname.value;
-					} catch (error) {
+					} catch {
 						scientificName = '#ND';
 					}
 
@@ -205,7 +205,7 @@ function getPromiseOfPlantResolvedByOpendataByName({ff, ffSparql, config, log}, 
 					try {
 						taxonRankId = sparqlQueryScientificName.results.bindings[0].taxonrank.value;
 						taxonRankLabel = sparqlQueryScientificName.results.bindings[0].taxonrankLabel.value;
-					} catch (error) {
+					} catch {
 						taxonRankId = '#ND';
 						taxonRankLabel = '#ND';
 					}
