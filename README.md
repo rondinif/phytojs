@@ -42,6 +42,14 @@ npm i
 npm run clean:prepare:cover
 ```
 <!-- TODO add postprocessing to fix import in `umd/phyto.js` to fix import to ./ (current dir) instead of ../esm -->
+..or when conigured `ignore-scripts=true` run 
+``` bash
+npm --ignore-scripts=false run clean 
+npm --ignore-scripts=false run prepare 
+npm --ignore-scripts=false run cover
+npm --ignore-scripts=false run test 
+```
+
 
 ### Unit tests
 ``` bash
