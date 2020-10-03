@@ -65,25 +65,25 @@
   "devDependencies": {
     "@roarr/cli": "^1.4.0",
     "chalk": "^2.4.2",
-    "commitlint": "^8.1.0",
+    "commitlint": "^11.0.0",
     "coveralls": "^3.0.5",
     "documentation-devseed-theme": "^0.1.7",
-    "documentation-theme-bespoke": "^1.0.1",
+    "documentation-theme-bespoke": "^1.1.6",
     "es6-promise": "^4.2.8",
     "esm": "^3.2.25",
-    "isomorphic-fetch": "^2.2.1",
+    "isomorphic-fetch": "^3.0.0",
     "loglevel": "^1.6.3",
     "nyc": "^14.1.0",
     "proxyquire": "^2.1.1",
-    "roarr": "^2.13.0",
+    "roarr": "^2.15.4",
     "rollup": "^1.17.0",
-    "rollup-plugin-terser": "^4.0.4",
+    "rollup-plugin-terser": "^7.0.2",
     "sinon": "^7.2.7",
     "tap": "^13.1.11",
     "tap-spec": "^5.0.0",
     "tape": "^4.11.0",
     "tape-nock": "^1.6.3",
-    "xo": "^0.24.0"
+    "xo": "^0.33.1"
   },
   "dependencies": {
     "dotenv-flow": "^0.2.0"

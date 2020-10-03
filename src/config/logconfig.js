@@ -45,8 +45,8 @@ const castToBoolen = anyValue => {
 		}
 
 		default: {
-			const value = parseInt(anyValue, 10);
-			if (isNaN(value)) {
+			const value = Number.parseInt(anyValue, 10);
+			if (Number.isNaN(value)) {
 				throw new TypeError('{anyValue} is not acceptable value for boolean configurable options');
 			}
 

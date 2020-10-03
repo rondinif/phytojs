@@ -256,19 +256,38 @@
 		});
 	}
 
-	// https://humanwhocodes.com/blog/2019/01/stop-using-default-exports-javascript-module/
+	// [Why I've stopped exporting defaults from my JavaScript modules](https://humanwhocodes.com/blog/2019/01/stop-using-default-exports-javascript-module/)
 	/**
-	 * This is a description of the Phyto constructor function.
+	 * PhytoJS
+	 * @module rondinif/phytojs
+	 * @description this module contains the Phyto class that has all the methods you need
+	 * @see module:rondinif/phytojs
+	 * bla bla bla
+	 */
+
+	/**
+	 * main class to use **PhytoJS application programming interface**. see *Instance Members* to learn about the features available and what each one of them does.
+	 * @example
+	 *
+	 * import 'isomorphic-fetch';
+	 * import { Phyto } from '@rondinif/phytojs';
+	 * const api = new Phyto(fetch);
+	 * api.resolvedPlantsByName('origano').then(async res => {
+	 *   console.log(JSON.stringify(res.plants));
+	 * });
+	 *
 	 * @class
-	 * @classdesc This is a description of the Phyto class.
+	 * @memberof module:rondinif/phytojs
+	 * @classdesc PhytoJS package main API class.
 	 */
 	class Phyto {
 		/**
 	    * @constructor
-	    * @param {Function} fetch - a fetch function possibly polymorphic
-	    * @param {object} config - a configuration object isomorph with @rondinif/phytojs/esm/config
-	    * @param {object} log - a logger object isomorph with @rondinif/phytojs/esm/log
-	    * @param {object} logconfig - a configuration object dor the logger, isomorph with @rondinif/phytojs/esm/logconfig
+	    * @param {Function} fetch - a *fetch function* possibly an **isomorphic** one; when code [runs in browsers](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) it could be `window.fetch` ,  or any compliant [standard fetch](https://fetch.spec.whatwg.org/); PhytoJS's tests are passed by using [isomorphic-fetch](https://www.npmjs.com/package/isomorphic-fetch)
+			*
+	    * @param {object} [config={isUnderTest: () => false}] - an optional *configuration object* that has confifuration properties as defined in {@link config/config} @rondinif/phytojs/esm/config {@link config}
+	    * @param {object} [log=new Log()] - a logger object isomorph with @rondinif/phytojs/esm/log
+	    * @param {object} [logconfig={isLogVerbose: () => false, isLogSilent: () => true}] - a configuration object for the logger, isomorph with {@link config/logconfig} @rondinif/phytojs/esm/logconfig {@link logconfig}
 	    */
 		constructor(fetch, config, log$1, logconfig) {
 			this._effectiveConfig = (typeof config === 'undefined') ? {isUnderTest: () => false} : config;
@@ -289,7 +308,7 @@
 		// SECTION which concerns: `openDataPromisesFactories`
 
 		/**
-	    * @param {string} name - the `name` or any `term` for which the wikidata search will be carried out
+	    * @param {string} name - the `name` or any `term` for which the wikidata search will be carried out; read {@link Phyto#getWikiDataApiEndpointUri}  carefully and make sure you understand the recommendations regarding the use of data sources and endpoints for an aware use of this functionality.
 	    * @return {Promise} - a Promise of the search results; @see [tests](https://github.com/rondinif/phytojs/blob/master/test/lib/) and [expectations](https://github.com/rondinif/phytojs/tree/master/test/fixture/lib/OpenDataLogicAgent/wdSearchByAnyName)
 	    */
 		wdSearchByAnyName(name) {
@@ -297,6 +316,7 @@
 		}
 
 		/**
+		  * @method
 	    * @param {string} name - the `name` of the plant for which the odla search will be carried out
 	    * @return {Promise} - a Promise of the search results; @see [tests](https://github.com/rondinif/phytojs/blob/master/test/lib/) and [expectations](https://github.com/rondinif/phytojs/tree/master/test/fixture/lib/OpenDataLogicAgent/wdPlantsByAnyName)
 	    */
@@ -313,9 +333,12 @@
 		}
 
 		/**
-	    * @param {string} id - the `id` of the entitity for which the odla re-solver will go to find valid `scientific-name`
-	    * @return {Promise} - a Promise of results with the list of `scientific-name` of the resolved plants; @see [tests](https://github.com/rondinif/phytojs/blob/master/test/lib/) and [expectations](https://github.com/rondinif/phytojs/tree/master/test/fixture/lib/OpenDataLogicAgent/sparqlScientificNameById)
-	    */
+		 * Bla Bla
+		 * TODO ... completare con un Example
+		 *
+	   * @param {string} id - the `id` of the entitity for which the odla re-solver will go to find valid `scientific-name`
+		 * @return {Promise} - a Promise of results with the list of `scientific-name` of the resolved plant; see [tests](https://github.com/rondinif/phytojs/blob/master/test/lib/) and [expectations](https://github.com/rondinif/phytojs/tree/master/test/fixture/lib/OpenDataLogicAgent/sparqlScientificNameById)
+		 */
 		sparqlScientificNameById(id) {
 			return this._sparqlScientificNameById(id);
 		}
@@ -323,31 +346,95 @@
 		// SECTION which concerns: `openDataEndpointFactories`
 
 		/**
-	    * @return {string} - the `SPARQL endpoint` which will be used by the `OpenDataLogicAgent`
-	    */
+		 * The [URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) of the [Web API enpoint](https://en.wikipedia.org/wiki/Web_API) used by PhytoJS to interface the [Wikidata Query Service](https://query.wikidata.org). The SPARQL endpoint URI is set by configuration; default behavior uses live endpoint only in production, while a virtualized service is used for tests.
+		 *
+		 * **Recommendation #1**:	Before using live endpoints make sure you have checked , accepted and agreed to the *Web API endpoint* service's *term of use*, *disclaimers*, *privacy policies* and *other conditions*; in this case see wikimedia.org-wiki [term of use](https://foundation.wikimedia.org/wiki/Terms_of_Use/en#Our_Terms_of_Use) and wikidata [disclaimer](https://www.wikidata.org/wiki/Wikidata:General_disclaimer)
+		 *
+		 * **Recommendation #2**: When the system is under test (or is at the development stage) the live endpoint should not be used; use a service virtualization tool instead with proxies support and record/replay behavior to easily capture data from origin server that the request should proxy to.  @see [service-virtualization](https://raw.githubusercontent.com/rondinif/phytojs/master/script/mbstart.sh) as a possible choice.
+		 *
+		 * @function
+		 * @example
+		 *
+		 * import 'isomorphic-fetch';
+		 * import { Phyto } from '@rondinif/phytojs';
+		 * const api = new Phyto(fetch);
+		 * console.log(api.getSparqlEndpointUri()); // > 'https://query.wikidata.org'
+	   * api.config().isUnderTest = () => true;
+		 * console.log(api.getSparqlEndpointUri()); // > 'http://127.0.0.1:6569'
+	   *
+	   * @return {string} - the `SPARQL endpoint` which will be used by the `OpenDataLogicAgent`
+	   */
 		getSparqlEndpointUri() {
 			return this._sparqlEndpointUri();
 		}
 
 		/**
-	    * @return {string} - the `Wikidata API endpoint` which will be used by the `OpenDataLogicAgent`
-	    */
+		 * The [URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) of the [Web API enpoint](https://en.wikipedia.org/wiki/Web_API) used by PhytoJS to interface [MediaWiki API](https://www.wikidata.org/w/api.php). The Web API enpoint URI is set by configuration; default behavior uses live endpoint only in production, while a virtualized service is used for tests.
+		 *
+		 * **Recommendation #1**:	Before using live endpoints make sure you have checked , accepted and agreed to the *Web API endpoint* service's *term of use*, *disclaimers*, *privacy policies* and *other conditions*; in this case see wikimedia.org-wiki [term of use](https://foundation.wikimedia.org/wiki/Terms_of_Use/en#Our_Terms_of_Use) and wikidata [disclaimer](https://www.wikidata.org/wiki/Wikidata:General_disclaimer)
+		 *
+		 * **Recommendation #2**: When the system is under test (or is at the development stage) the live endpoint should not be used; use a service virtualization tool instead with proxies support and record/replay behavior to easily capture data from origin server that the request should proxy to.  @see [service-virtualization](https://raw.githubusercontent.com/rondinif/phytojs/master/script/mbstart.sh) as a possible choice.
+		 *
+		 * @function
+		 * @example
+		 *
+		 * import 'isomorphic-fetch';
+		 * import { Phyto } from '@rondinif/phytojs';
+		 * const api = new Phyto(fetch);
+		 * console.log(api.getWikiDataApiEndpointUri()); // > 'https://www.wikidata.org/w/api.php'
+	   * api.config().isUnderTest = () => true;
+		 * console.log(api.getWikiDataApiEndpointUri()); // > 'http://127.0.0.1:6568/w/api.php'
+	   *
+	   * @return {string} - the `Wikidata API endpoint` which will be used by `OpenDataLogicAgent`
+	   */
 		getWikiDataApiEndpointUri() {
 			return this._wdEndpointUri();
 		}
 
 		/**
-	    * @return {object} - the effective `configuration` which will be used by the `OpenDataLogicAgent`
-	    */
+		 * Allow access to the configuration object;
+		 * Use this *function* to inspect the current *logger configuration*
+		 * or to change on the fly the the PhytoJS's api instance configuration settings (hot change).
+		 * @function
+		 * @example
+		 *
+		 * import 'isomorphic-fetch';
+		 * import { Phyto } from '@rondinif/phytojs';
+		 * const api = new Phyto(fetch);
+		 * console.log(api.config().isUnderTest()); // > false
+		 * api.config().isUnderTest = () => true;
+		 * console.log(api.config().isUnderTest()); // > true
+		 *
+	   * @return {object} - the effective `configuration` which will be used by the `OpenDataLogicAgent` PhytoJs internals.
+	  */
 		config() {
 			return this._effectiveConfig;
 		}
 
 		/**
-	    * @return {object} - the effective `logger` which will be used by the `OpenDataLogicAgent`
-	    */
+		 * Allow access to the actual internal used *logger*
+		 * Use this *function* to get the *logger* object actually used internally by PhytoJS; the *logger* object could  be used to inspect the current *logger configuration* or for logging by the same *logger* used by the PhytoJS's api instance.
+		 * @function
+		 * @example
+		 *
+		 * import 'isomorphic-fetch';
+		 * import { Phyto } from '@rondinif/phytojs';
+		 * const api = new Phyto(fetch);
+		 * api.logger()._config.isLogSilent();
+		 * //	true
+		 * api.logger()._config.isLogVerbose();
+		 * //	false
+		 *
+		 * // live change logger configuration settings
+		 * api.logger()._config.isLogSilent = () => false;
+		 * api.logger()._config.isLogSilent();
+		 * // false
+		 * api.logger().info(('this log information is written by the actual logger used by the API instance of PhytoJS');
+		 * // this log information is written by the actual logger used by the API instance of PhytoJS
+		 *
+	   * @return {object} - the effective `logger` which will be used by the `OpenDataLogicAgent` PhytoJs internals.
+	   */
 		logger() {
-			// #DEBUG console.log(`####:${this._effectiveLog}`);
 			return this._effectiveLog;
 		}
 	}

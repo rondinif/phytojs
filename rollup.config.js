@@ -4,7 +4,7 @@ perchè importa gli esm che vanno generati prima
 questa scelta è stata fatta per mantenere separati i vari moduli
 e garantire una elevata coverage dei test
 */
-export default [
+const config = [
 	{
 		input: 'src/config/config.js',
 		external: ['dotenv-flow'],
@@ -105,3 +105,5 @@ export default [
 		}
 	}
 ];
+
+export default config;

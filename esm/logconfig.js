@@ -3,9 +3,9 @@ import dotenv from 'dotenv-flow';
 dotenv.config();
 /*
 Usage in programs:
-    import { config } from './lib/config.mjs';
+    import { logconfig } from './lib/logconfig.mjs';
 to check the effective configuration:
-    @see ../config.checher.mjs
+    @see ../logconfig.checher.mjs
 
 WARNING: to avoid circular reference this module **MUST** not import moduled that consumes configuration, such as:
  - <module-that-use-config-here>.mjs
@@ -13,7 +13,19 @@ WARNING: to avoid circular reference this module **MUST** not import moduled tha
 Coding Conventions: before each configuration a comment SHOULD be written; the comment also shows the names of the environment variables that can influence the effective configuration value. When present this comment MUST be updated also in the config.checker.mjs program.
 */
 
+/**
+ * The default behavior is not to be verbose
+ * @constant
+ * @type {boolean}
+ * @default false
+ */
 const DEFAULT_IS_LOG_VERBOSE = false;
+/**
+ * The default behavior is to be silent
+ * @constant
+ * @type {boolean}
+ * @default false
+ */
 const DEFAULT_IS_LOG_SILENT = true;
 
 const castToBoolen = anyValue => {
@@ -32,8 +44,8 @@ const castToBoolen = anyValue => {
 		}
 
 		default: {
-			const value = parseInt(anyValue, 10);
-			if (isNaN(value)) {
+			const value = Number.parseInt(anyValue, 10);
+			if (Number.isNaN(value)) {
 				throw new TypeError('{anyValue} is not acceptable value for boolean configurable options');
 			}
 
@@ -43,6 +55,12 @@ const castToBoolen = anyValue => {
 	}
 };
 
+/**
+ * {@link Phyto} log configuration object.
+ * @module
+ * @constant
+ * @type {Object}
+ */
 const logconfig = {
 	/*
     The log is verbose enabed
