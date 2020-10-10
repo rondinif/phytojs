@@ -7,13 +7,13 @@ import {openDataPromisesFactories, openDataEndpointFactories} from './lib/open-d
 /**
  * PhytoJS
  * @module rondinif/phytojs
- * @description this module contains the Phyto class that has all the methods you need
+ * @description this module contains the Phyto class that has methods to simplify access to open data relating to the world of flowers, vegetables and plants by providing powerful search functions to obtain entities belonging to this data domain
  * @see module:rondinif/phytojs
- * bla bla bla
+ * the self contained code of this module promotes less clutter in the global namespace; the module pattern will typically push one object onto the global namespace, and all interaction with the module goes through this object.
  */
 
 /**
- * main class to use **PhytoJS application programming interface**. see *Instance Members* to learn about the features available and what each one of them does.
+ * main class to use as **PhytoJS application programming interface**. see *Instance Members* to learn about the features available and what each one of them does.
  * @example
  *
  * import 'isomorphic-fetch';
