@@ -1,38 +1,1279 @@
 <!doctype html>
-<html lang="en" data-framework="javascript">
+<html>
 
 <head>
-    <meta charset="utf-8">
-    <title>PhytoJS</title>
-    <link rel=stylesheet href="mvc/app.css">
+	<meta charset='utf-8' />
+	<title>@rondinif/phytojs 1.3.0 | Documentation</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'>
+	<link href='assets/bass.css' rel='stylesheet' />
+	<link href='assets/style.css' rel='stylesheet' />
+	<link href='assets/github.css' rel='stylesheet' />
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i' />
 </head>
 
-<body>
+<body class='documentation m0'>
+	<div class='page flex'>
+		<header class='page__header'>
+			<div class='inner'>
+				<div class='page__headline'>
+					<h1 class='mb0 no-anchor page__title'>@rondinif/phytojs</h1>
+					<p class='mb1 page__subtitle'><code>1.3.0</code></p>
+				</div>
 
-    <section class="nosupport" hidden>
-        <h4>Apologies.. your browser doesn't support ES Modules. </h4>
-        <p>You <a href="https://github.com/rondinif/rondinif#readme">may be able to enable them with a flag</a>.
-    </section>
+				<a id='menu-toggle' href='#prime-nav' title='Show/hide menu' class='menu-toggle'><span>Browse</span></a>
 
-    <script nomodule>
-        // script only runs browsers that don't support modules (ideally)
-        document.querySelector('.nosupport').hidden = false;
-    </script>
-    <script type=module>
-      // requires modules to hide. (FOUC in non-[nomodule] supporting browsers right now)
-     import {qs} from './mvc/helpers.js'
-      qs('.nosupport').hidden = true;
-    </script>
+				<nav class='page__prime-nav' id='prime-nav'>
+					<input placeholder='Filter' id='filter-input' class='col12 block input' type='text' />
 
-    <section class="phytoapp">
-        <header class="header">
-            <h1>PhytoJS Examples</h1>
-            <a href="./mvc">Vanilla ES6 MVC SPA</a>
-        </header>
-    <footer class="info">
-        <p>Created by <a href="http://twitter.com/rondinif">Franco Rondini</a>
-            <p><a href="https://github.com/rondinif/phytojs#readme">repo: https://github.com/rondinif/phytojs#readme</a>
-    </footer>
+					<h2 class='mb1 page__subtitle'>Contents</h2>
+
+					<div class='page__nav-contents'>
+						<div id='toc'>
+							<ul class='ppn__menu'>
+
+
+								<li><a href='#intro' class='h5 bold black caps ppn__menu-item'>
+										Intro
+
+									</a>
+
+								</li>
+
+
+								<li><a href='#rondinifphytojs' class=' ppn__menu-item'>
+										rondinif/phytojs
+
+									</a>
+
+								</li>
+
+
+								<li><a href='#config' class='h5 bold black caps toggle-sibling ppn__menu-item'>
+										Config
+										<span class='icon'>▸</span>
+									</a>
+
+									<div class='toggle-target display-none'>
+
+										<ul class='list-reset py1-ul pl1 ppn__menu-item'>
+											<li class='h5'><span>Static members</span></li>
+
+											<li><a href='#config' class='regular pre-open ppn__menu-item'>
+													.config
+												</a></li>
+
+											<li><a href='#default_is_under_test' class='regular pre-open ppn__menu-item'>
+													.DEFAULT_IS_UNDER_TEST
+												</a></li>
+
+										</ul>
+
+
+
+
+									</div>
+
+								</li>
+
+
+								<li><a href='#logging' class='h5 bold black caps toggle-sibling ppn__menu-item'>
+										Logging
+										<span class='icon'>▸</span>
+									</a>
+
+									<div class='toggle-target display-none'>
+
+										<ul class='list-reset py1-ul pl1 ppn__menu-item'>
+											<li class='h5'><span>Static members</span></li>
+
+											<li><a href='#logconfig' class='regular pre-open ppn__menu-item'>
+													.logconfig
+												</a></li>
+
+											<li><a href='#default_is_log_verbose' class='regular pre-open ppn__menu-item'>
+													.DEFAULT_IS_LOG_VERBOSE
+												</a></li>
+
+											<li><a href='#default_is_log_silent' class='regular pre-open ppn__menu-item'>
+													.DEFAULT_IS_LOG_SILENT
+												</a></li>
+
+										</ul>
+
+
+
+
+									</div>
+
+								</li>
+
+
+								<li><a href='#licence' class='h5 bold black caps ppn__menu-item'>
+										Licence
+
+									</a>
+
+								</li>
+
+
+								<li><a href='#phyto' class=' ppn__menu-item'>
+										Phyto
+
+									</a>
+
+								</li>
+
+
+								<li><a href='#wdsearchbyanyname' class=' ppn__menu-item'>
+										wdSearchByAnyName
+
+									</a>
+
+								</li>
+
+
+								<li><a href='#wdplantsbyanyname' class=' ppn__menu-item'>
+										wdPlantsByAnyName
+
+									</a>
+
+								</li>
+
+
+								<li><a href='#resolvedplantsbyname' class=' ppn__menu-item'>
+										resolvedPlantsByName
+
+									</a>
+
+								</li>
+
+
+								<li><a href='#sparqlscientificnamebyid' class=' ppn__menu-item'>
+										sparqlScientificNameById
+
+									</a>
+
+								</li>
+
+
+								<li><a href='#getsparqlendpointuri' class=' ppn__menu-item'>
+										getSparqlEndpointUri
+
+									</a>
+
+								</li>
+
+
+								<li><a href='#getwikidataapiendpointuri' class=' ppn__menu-item'>
+										getWikiDataApiEndpointUri
+
+									</a>
+
+								</li>
+
+
+								<li><a href='#config' class=' ppn__menu-item'>
+										config
+
+									</a>
+
+								</li>
+
+
+								<li><a href='#logger' class=' ppn__menu-item'>
+										logger
+
+									</a>
+
+								</li>
+
+							</ul>
+
+							<div class='mt1 h6 quiet'>
+								<a class='page__subtitle' href='http://documentation.js.org/reading-documentation.html'>Need help
+									reading this?</a>
+							</div>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</header>
+
+		<main class='page__body'>
+
+
+			<div class='keyline-top-not py2'>
+				<section class='py2 clearfix'>
+
+					<h2 id='intro' class='mt0'>
+						Intro
+					</h2>
+
+
+					<h3>Introduction to the PhytoJS package</h3>
+					<p>Welcome to <code>PhytoJS</code>, a modern javascript toolkit to search about plants on open data. </p>
+					<ul>
+						<li>The prefix <a href="https://en.wiktionary.org/wiki/phyto-">phyto-</a> , comes from ancient greek φυτόν
+							(phutón, “plant”), is used when something is <strong>pertaining</strong> to or derived from
+							<strong>plants</strong>.</li>
+						<li><a href="https://en.wiktionary.org/wiki/js">js</a> is the abbreviation of <strong>javascript</strong>.
+						</li>
+					</ul>
+					<h4>About PhytoJS documentation</h4>
+					<p>This documentation is still a work in progress,nevertheless it could help to understand what PhytoJS
+						consists of, how to use the library and what are the APIs it provides.</p>
+					<h4>Why should this project interest me?</h4>
+					<p>The development of PhytoJS has a single goal: gain experience by experimenting with emerging and gain
+						experience by experimenting with interesting software engineering practices and enjoy the benefits that can
+						be obtained through them.
+						This can be done by having fun with an area of interest as pleasant and important as the world of flowers,
+						vegetables and plants. </p>
+					<p>Collaborating together in the development of <code>PhytoJS</code> it's an opportunity to learn a lot of new
+						things and share them with fellow friends and the community</p>
+					<!--
+##### “Do one thing and do it well” 
+There are some principles that inspire the design and implementation of the project. 
+You can know more by reading [Principles and Patterns](https://web.archive.org/web/20150906155800/http://www.objectmentor.com/resources/articles/Principles_and_Patterns.pdf) and [Twelve-Factor App methodology](https://12factor.net)
+if you think there are points where this does not happen correctly or can be improved you should immediately [open an new issue](https://github.com/rondinif/phytojs/issues) and express your idea.
+<!--
+[Twelve-Factor_App_methodology](https://en.wikipedia.org/wiki/Twelve-Factor_App_methodology) [Q197857](single responsibility principle) 
+-->
+					<h4>How to use the PhytoJS's algorithms as a dependency or service component for my programs</h4>
+					<p><code>PhytoJS</code> is <a href="https://www.npmjs.com/package/@rondinif/phytojs">released as a package</a>
+						and can easily be exploited by other projects thaks to popular package manager such as <code>npm</code> or
+						<code>yarm</code>.</p>
+					<p><code>PhytoJS</code> was designed to (theoretically) work whatever the use case,as long as the application
+						in in the Javascript or Typescript ecosystem, as long as the application in in the Javascript or Typescript
+						ecosystem, it could be used in: </p>
+					<ul>
+						<li>Front-end and browser scripts</li>
+						<li>Command line interface (CLI) applications</li>
+						<li>Desktop (GUI) applications</li>
+						<li>Mobile applications</li>
+						<li>Back-end development</li>
+						<li>In the build or continous integration phases</li>
+						<li>Any combination of the above</li>
+					</ul>
+					<h3>Some examples of how this library could apply in your projects</h3>
+					<h4><a href="https://github.com/rondinif/phytojs/tree/master/samples">PhytoJS Samples for NodeJS</a></h4>
+					<p>There are examples that use both <code>require</code> and <code>import</code> to reference the PhytoJS
+						servive module. </p>
+					<ul>
+						<li>
+							<p>UMD (Universal Module Definition)</p>
+							<ul>
+								<li><code>AMD</code> and <code>CJS</code> (<code>CommonJS</code>) are both compatible with
+									<code>UMD</code></li>
+							</ul>
+						</li>
+						<li>ESM / ES6 (ECMAScript.next and TC39 Module Definition)</li>
+					</ul>
+					<h4><a href="https://github.com/rondinif/phytojs/tree/master/docs">PhytoJS Samples for the browser</a></h4>
+					<h4>Live <a href="https://rondinif.github.io/phytojs/mvc">Demo of PhytoJS running in the browser</a></h4>
+					<p><a href="https://youtu.be/kzvMT4TYiZk">video demo available</a>
+						<a href="https://youtu.be/kzvMT4TYiZk" title="demo"><img src="http://img.youtube.com/vi/kzvMT4TYiZk/0.jpg"
+								alt="demo video"></a></p>
+					<h4>Play &#x26; Learn by these codepens: <a href="https://codepen.io/collection/DPKJKN/">PhytoJS &#x26; pReact
+							tutorial</a></h4>
+					<p>.. more pens linked in the <a href="https://github.com/rondinif/phytojs/tree/master/docs">samples for the
+							browser section</a></p>
+					<h4>ServerSide PhytoJS Samples for NodeJS</h4>
+					<ul>
+						<li><a href="https://runkit.com/rondinif/phytojs-rosmarino">Trivial Runkit PhytoJs endpoint example</a>
+						</li>
+						<li><a href="https://runkit.com/rondinif/phytojs-api">PhytoJs Express API endpoint in RunKit</a></li>
+					</ul>
+					<h4>What's in <code>PhythoJS</code> the library</h4>
+					<p>Let's start with the main <a href="#phyto">Phyto</a> class or jump directly to its most useful methods:</p>
+					<ul>
+						<li><a href="#resolvedplantsbyname">resolvedPlantsByName</a></li>
+						<li><a href="#wdsearchbyanyname">wdSearchByAnyName</a></li>
+						<li><a href="#wdplantsbyanyname">wdPlantsByAnyName</a></li>
+						<li><a href="#sparqlscientificnamebyid">sparqlScientificNameById</a></li>
+					</ul>
+
+
+				</section>
+			</div>
+
+
+
+			<section class='p2 mb2 clearfix bg-white minishadow'>
+
+
+				<div class='clearfix'>
+
+					<h3 class='fl m0' id='rondinifphytojs'>
+						rondinif/phytojs
+					</h3>
+
+
+					<a class='fr fill-darken0 round round pad1x quiet h5'
+						href='https://github.com/rondinif/phytojs/blob/76c9c8fda90f5d72543d989cb516d441a0a78203/src/main.js#L30-L187'>
+						<span>src/main.js</span>
+					</a>
+
+				</div>
+
+
+				<div class="markdown-body">
+					<p>this module contains the Phyto class that has methods to simplify access to open data relating to the world
+						of flowers, vegetables and plants by providing powerful search functions to obtain entities belonging to
+						this data domain</p>
+
+				</div>
+
+				<div class='pre p1 fill-light mt0'>rondinif/phytojs</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			</section>
+
+
+
+
+			<div class='keyline-top-not py2'>
+				<section class='py2 clearfix'>
+
+					<h2 id='config' class='mt0'>
+						Config
+					</h2>
+
+
+					<h4>PhytoJS Configuration</h4>
+					<p>this chapter explains phytojs configuration </p>
+					<!-- TODO -->
+					<h2>see also:</h2>
+					<ul>
+						<li><a href="https://www.npmjs.com/package/dotenv-flow">https://www.npmjs.com/package/dotenv-flow</a></li>
+					</ul>
+
+
+				</section>
+			</div>
+
+
+
+			<div class='keyline-top-not py2'>
+				<section class='py2 clearfix'>
+
+					<h2 id='logging' class='mt0'>
+						Logging
+					</h2>
+
+
+					<h4>PhytoJS logging</h4>
+					<p>this chapter will explains logging in phytojs </p>
+					<!-- TODO -->
+
+
+				</section>
+			</div>
+
+
+
+			<div class='keyline-top-not py2'>
+				<section class='py2 clearfix'>
+
+					<h2 id='licence' class='mt0'>
+						Licence
+					</h2>
+
+
+					<p>MIT License</p>
+					<p>Copyright (c) 2019 Franco Rondini</p>
+					<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+						associated documentation files (the "Software"), to deal in the Software without restriction, including
+						without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+						copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
+						following conditions:</p>
+					<p>The above copyright notice and this permission notice shall be included in all copies or substantial
+						portions of the Software.</p>
+					<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+						LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
+						EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+						AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+						OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+
+				</section>
+			</div>
+
+
+
+			<section class='p2 mb2 clearfix bg-white minishadow'>
+
+
+				<div class='clearfix'>
+
+					<h3 class='fl m0' id='phyto'>
+						Phyto
+					</h3>
+
+
+					<a class='fr fill-darken0 round round pad1x quiet h5'
+						href='https://github.com/rondinif/phytojs/blob/76c9c8fda90f5d72543d989cb516d441a0a78203/src/main.js#L30-L187'>
+						<span>src/main.js</span>
+					</a>
+
+				</div>
+
+
+				<div class="markdown-body">
+					<p>main class to use as <strong>PhytoJS application programming interface</strong>. see <em>Instance
+							Members</em> to learn about the features available and what each one of them does.</p>
+
+				</div>
+
+				<div class='pre p1 fill-light mt0'>new Phyto(fetch: <a
+						href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>, config:
+					<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, log:
+					<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>,
+					logconfig: <a
+						href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
+
+
+
+
+
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Parameters</div>
+				<div class='prose'>
+
+					<div class='space-bottom0'>
+						<div>
+							<span class='code bold'>fetch</span> <code
+								class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
+							a
+							<em>fetch function</em>
+							possibly an
+							<strong>isomorphic</strong>
+							one; when code
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">runs in browsers</a>
+							it could be
+							<code>window.fetch</code>
+							, or any compliant
+							<a href="https://fetch.spec.whatwg.org/">standard fetch</a>
+							; PhytoJS's tests are passed by using
+							<a href="https://www.npmjs.com/package/isomorphic-fetch">isomorphic-fetch</a>
+
+						</div>
+
+					</div>
+
+					<div class='space-bottom0'>
+						<div>
+							<span class='code bold'>config</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>
+            = <code>{isUnderTest:()=&gt;false}</code>)</code>
+							an optional
+							<em>configuration object</em>
+							that has confifuration properties as defined in
+							<a href="config/config">config/config</a>
+							@rondinif/phytojs/esm/config
+							<a href="#config">config</a>
+
+						</div>
+
+					</div>
+
+					<div class='space-bottom0'>
+						<div>
+							<span class='code bold'>log</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>
+            = <code>newLog()</code>)</code>
+							a logger object isomorph with @rondinif/phytojs/esm/log
+
+						</div>
+
+					</div>
+
+					<div class='space-bottom0'>
+						<div>
+							<span class='code bold'>logconfig</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>
+            = <code>{isLogVerbose:()=&gt;false,isLogSilent:()=&gt;true}</code>)</code>
+							a configuration object for the logger, isomorph with
+							<a href="config/logconfig">config/logconfig</a>
+							@rondinif/phytojs/esm/logconfig
+							<a href="#logconfig">logconfig</a>
+
+						</div>
+
+					</div>
+
+				</div>
+
+
+
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Example</div>
+
+
+				<pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> <span class="hljs-string">'isomorphic-fetch'</span>;
+<span class="hljs-keyword">import</span> { Phyto } <span class="hljs-keyword">from</span> <span class="hljs-string">'@rondinif/phytojs'</span>;
+<span class="hljs-keyword">const</span> api = <span class="hljs-keyword">new</span> Phyto(fetch);
+api.resolvedPlantsByName(<span class="hljs-string">'origano'</span>).then(<span class="hljs-keyword">async</span> res =&gt; {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(res.plants));
+});</pre>
+
+
+
+
+
+
+
+
+			</section>
+
+
+
+
+			<section class='p2 mb2 clearfix bg-white minishadow'>
+
+
+				<div class='clearfix'>
+
+					<h3 class='fl m0' id='wdsearchbyanyname'>
+						wdSearchByAnyName
+					</h3>
+
+
+					<a class='fr fill-darken0 round round pad1x quiet h5'
+						href='https://github.com/rondinif/phytojs/blob/76c9c8fda90f5d72543d989cb516d441a0a78203/src/main.js#L61-L63'>
+						<span>src/main.js</span>
+					</a>
+
+				</div>
+
+
+				<div class="markdown-body">
+
+				</div>
+
+				<div class='pre p1 fill-light mt0'>wdSearchByAnyName(name: <a
+						href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a
+						href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
+
+
+
+
+
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Parameters</div>
+				<div class='prose'>
+
+					<div class='space-bottom0'>
+						<div>
+							<span class='code bold'>name</span> <code
+								class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+							the
+							<code>name</code>
+							or any
+							<code>term</code>
+							for which the wikidata search will be carried out; read
+							<a href="Phyto#getWikiDataApiEndpointUri">Phyto#getWikiDataApiEndpointUri</a>
+							carefully and make sure you understand the recommendations regarding the use of data sources and endpoints
+							for an aware use of this functionality.
+
+						</div>
+
+					</div>
+
+				</div>
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Returns</div>
+				<code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
+				a Promise of the search results; @see
+				<a href="https://github.com/rondinif/phytojs/blob/master/test/lib/">tests</a>
+				and
+				<a
+					href="https://github.com/rondinif/phytojs/tree/master/test/fixture/lib/OpenDataLogicAgent/wdSearchByAnyName">expectations</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			</section>
+
+
+
+
+			<section class='p2 mb2 clearfix bg-white minishadow'>
+
+
+				<div class='clearfix'>
+
+					<h3 class='fl m0' id='wdplantsbyanyname'>
+						wdPlantsByAnyName
+					</h3>
+
+
+					<a class='fr fill-darken0 round round pad1x quiet h5'
+						href='https://github.com/rondinif/phytojs/blob/76c9c8fda90f5d72543d989cb516d441a0a78203/src/main.js#L70-L72'>
+						<span>src/main.js</span>
+					</a>
+
+				</div>
+
+
+				<div class="markdown-body">
+
+				</div>
+
+				<div class='pre p1 fill-light mt0'>wdPlantsByAnyName(name: <a
+						href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a
+						href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
+
+
+
+
+
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Parameters</div>
+				<div class='prose'>
+
+					<div class='space-bottom0'>
+						<div>
+							<span class='code bold'>name</span> <code
+								class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+							the
+							<code>name</code>
+							of the plant for which the odla search will be carried out
+
+						</div>
+
+					</div>
+
+				</div>
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Returns</div>
+				<code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
+				a Promise of the search results; @see
+				<a href="https://github.com/rondinif/phytojs/blob/master/test/lib/">tests</a>
+				and
+				<a
+					href="https://github.com/rondinif/phytojs/tree/master/test/fixture/lib/OpenDataLogicAgent/wdPlantsByAnyName">expectations</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			</section>
+
+
+
+
+			<section class='p2 mb2 clearfix bg-white minishadow'>
+
+
+				<div class='clearfix'>
+
+					<h3 class='fl m0' id='resolvedplantsbyname'>
+						resolvedPlantsByName
+					</h3>
+
+
+					<a class='fr fill-darken0 round round pad1x quiet h5'
+						href='https://github.com/rondinif/phytojs/blob/76c9c8fda90f5d72543d989cb516d441a0a78203/src/main.js#L78-L80'>
+						<span>src/main.js</span>
+					</a>
+
+				</div>
+
+
+				<div class="markdown-body">
+
+				</div>
+
+				<div class='pre p1 fill-light mt0'>resolvedPlantsByName(name: <a
+						href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a
+						href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
+
+
+
+
+
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Parameters</div>
+				<div class='prose'>
+
+					<div class='space-bottom0'>
+						<div>
+							<span class='code bold'>name</span> <code
+								class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+							the
+							<code>name</code>
+							of the plant for which the odla re-solver will go to find valid entities uniquely identifiable by means of
+							an
+							<code>id</code>
+							and a
+							<code>scientific-name</code>
+
+						</div>
+
+					</div>
+
+				</div>
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Returns</div>
+				<code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
+				a Promise of results with the list resolved plants; @see
+				<a href="https://github.com/rondinif/phytojs/blob/master/test/lib/">tests</a>
+				and
+				<a
+					href="https://github.com/rondinif/phytojs/tree/master/test/fixture/lib/OpenDataLogicAgent/resolvedPlantsByName">expectations</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			</section>
+
+
+
+
+			<section class='p2 mb2 clearfix bg-white minishadow'>
+
+
+				<div class='clearfix'>
+
+					<h3 class='fl m0' id='sparqlscientificnamebyid'>
+						sparqlScientificNameById
+					</h3>
+
+
+					<a class='fr fill-darken0 round round pad1x quiet h5'
+						href='https://github.com/rondinif/phytojs/blob/76c9c8fda90f5d72543d989cb516d441a0a78203/src/main.js#L89-L91'>
+						<span>src/main.js</span>
+					</a>
+
+				</div>
+
+
+				<div class="markdown-body">
+					<p>Bla Bla
+						TODO ... completare con un Example</p>
+
+				</div>
+
+				<div class='pre p1 fill-light mt0'>sparqlScientificNameById(id: <a
+						href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a
+						href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
+
+
+
+
+
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Parameters</div>
+				<div class='prose'>
+
+					<div class='space-bottom0'>
+						<div>
+							<span class='code bold'>id</span> <code
+								class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+							the
+							<code>id</code>
+							of the entitity for which the odla re-solver will go to find valid
+							<code>scientific-name</code>
+
+						</div>
+
+					</div>
+
+				</div>
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Returns</div>
+				<code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
+				a Promise of results with the list of
+				<code>scientific-name</code>
+				of the resolved plant; see
+				<a href="https://github.com/rondinif/phytojs/blob/master/test/lib/">tests</a>
+				and
+				<a
+					href="https://github.com/rondinif/phytojs/tree/master/test/fixture/lib/OpenDataLogicAgent/sparqlScientificNameById">expectations</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			</section>
+
+
+
+
+			<section class='p2 mb2 clearfix bg-white minishadow'>
+
+
+				<div class='clearfix'>
+
+					<h3 class='fl m0' id='getsparqlendpointuri'>
+						getSparqlEndpointUri
+					</h3>
+
+
+					<a class='fr fill-darken0 round round pad1x quiet h5'
+						href='https://github.com/rondinif/phytojs/blob/76c9c8fda90f5d72543d989cb516d441a0a78203/src/main.js#L114-L116'>
+						<span>src/main.js</span>
+					</a>
+
+				</div>
+
+
+				<div class="markdown-body">
+					<p>The <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">URI</a> of the <a
+							href="https://en.wikipedia.org/wiki/Web_API">Web API enpoint</a> used by PhytoJS to interface the <a
+							href="https://query.wikidata.org">Wikidata Query Service</a>. The SPARQL endpoint URI is set by
+						configuration; default behavior uses live endpoint only in production, while a virtualized service is used
+						for tests.</p>
+					<p><strong>Recommendation #1</strong>: Before using live endpoints make sure you have checked , accepted and
+						agreed to the <em>Web API endpoint</em> service's <em>term of use</em>, <em>disclaimers</em>, <em>privacy
+							policies</em> and <em>other conditions</em>; in this case see wikimedia.org-wiki <a
+							href="https://foundation.wikimedia.org/wiki/Terms_of_Use/en#Our_Terms_of_Use">term of use</a> and wikidata
+						<a href="https://www.wikidata.org/wiki/Wikidata:General_disclaimer">disclaimer</a></p>
+					<p><strong>Recommendation #2</strong>: When the system is under test (or is at the development stage) the live
+						endpoint should not be used; use a service virtualization tool instead with proxies support and
+						record/replay behavior to easily capture data from origin server that the request should proxy to. @see <a
+							href="https://raw.githubusercontent.com/rondinif/phytojs/master/script/mbstart.sh">service-virtualization</a>
+						as a possible choice.</p>
+
+				</div>
+
+				<div class='pre p1 fill-light mt0'>getSparqlEndpointUri(): <a
+						href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Returns</div>
+				<code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>:
+				the
+				<code>SPARQL endpoint</code>
+				which will be used by the
+				<code>OpenDataLogicAgent</code>
+
+
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Example</div>
+
+
+				<pre
+					class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> <span class="hljs-string">'isomorphic-fetch'</span>;
+<span class="hljs-keyword">import</span> { Phyto } <span class="hljs-keyword">from</span> <span class="hljs-string">'@rondinif/phytojs'</span>;
+<span class="hljs-keyword">const</span> api = <span class="hljs-keyword">new</span> Phyto(fetch);
+<span class="hljs-built_in">console</span>.log(api.getSparqlEndpointUri()); <span class="hljs-comment">// &gt; 'https://query.wikidata.org'</span>
+api.config().isUnderTest = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-literal">true</span>;
+<span class="hljs-built_in">console</span>.log(api.getSparqlEndpointUri()); <span class="hljs-comment">// &gt; 'http://127.0.0.1:6569'</span></pre>
+
+
+
+
+
+
+
+
+			</section>
+
+
+
+
+			<section class='p2 mb2 clearfix bg-white minishadow'>
+
+
+				<div class='clearfix'>
+
+					<h3 class='fl m0' id='getwikidataapiendpointuri'>
+						getWikiDataApiEndpointUri
+					</h3>
+
+
+					<a class='fr fill-darken0 round round pad1x quiet h5'
+						href='https://github.com/rondinif/phytojs/blob/76c9c8fda90f5d72543d989cb516d441a0a78203/src/main.js#L137-L139'>
+						<span>src/main.js</span>
+					</a>
+
+				</div>
+
+
+				<div class="markdown-body">
+					<p>The <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">URI</a> of the <a
+							href="https://en.wikipedia.org/wiki/Web_API">Web API enpoint</a> used by PhytoJS to interface <a
+							href="https://www.wikidata.org/w/api.php">MediaWiki API</a>. The Web API enpoint URI is set by
+						configuration; default behavior uses live endpoint only in production, while a virtualized service is used
+						for tests.</p>
+					<p><strong>Recommendation #1</strong>: Before using live endpoints make sure you have checked , accepted and
+						agreed to the <em>Web API endpoint</em> service's <em>term of use</em>, <em>disclaimers</em>, <em>privacy
+							policies</em> and <em>other conditions</em>; in this case see wikimedia.org-wiki <a
+							href="https://foundation.wikimedia.org/wiki/Terms_of_Use/en#Our_Terms_of_Use">term of use</a> and wikidata
+						<a href="https://www.wikidata.org/wiki/Wikidata:General_disclaimer">disclaimer</a></p>
+					<p><strong>Recommendation #2</strong>: When the system is under test (or is at the development stage) the live
+						endpoint should not be used; use a service virtualization tool instead with proxies support and
+						record/replay behavior to easily capture data from origin server that the request should proxy to. @see <a
+							href="https://raw.githubusercontent.com/rondinif/phytojs/master/script/mbstart.sh">service-virtualization</a>
+						as a possible choice.</p>
+
+				</div>
+
+				<div class='pre p1 fill-light mt0'>getWikiDataApiEndpointUri(): <a
+						href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Returns</div>
+				<code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>:
+				the
+				<code>Wikidata API endpoint</code>
+				which will be used by
+				<code>OpenDataLogicAgent</code>
+
+
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Example</div>
+
+
+				<pre
+					class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> <span class="hljs-string">'isomorphic-fetch'</span>;
+<span class="hljs-keyword">import</span> { Phyto } <span class="hljs-keyword">from</span> <span class="hljs-string">'@rondinif/phytojs'</span>;
+<span class="hljs-keyword">const</span> api = <span class="hljs-keyword">new</span> Phyto(fetch);
+<span class="hljs-built_in">console</span>.log(api.getWikiDataApiEndpointUri()); <span class="hljs-comment">// &gt; 'https://www.wikidata.org/w/api.php'</span>
+api.config().isUnderTest = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-literal">true</span>;
+<span class="hljs-built_in">console</span>.log(api.getWikiDataApiEndpointUri()); <span class="hljs-comment">// &gt; 'http://127.0.0.1:6568/w/api.php'</span></pre>
+
+
+
+
+
+
+
+
+			</section>
+
+
+
+
+			<section class='p2 mb2 clearfix bg-white minishadow'>
+
+
+				<div class='clearfix'>
+
+					<h3 class='fl m0' id='config'>
+						config
+					</h3>
+
+
+					<a class='fr fill-darken0 round round pad1x quiet h5'
+						href='https://github.com/rondinif/phytojs/blob/76c9c8fda90f5d72543d989cb516d441a0a78203/src/main.js#L157-L159'>
+						<span>src/main.js</span>
+					</a>
+
+				</div>
+
+
+				<div class="markdown-body">
+					<p>Allow access to the configuration object;
+						Use this <em>function</em> to inspect the current <em>logger configuration</em>
+						or to change on the fly the the PhytoJS's api instance configuration settings (hot change).</p>
+
+				</div>
+
+				<div class='pre p1 fill-light mt0'>config(): <a
+						href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Returns</div>
+				<code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+				the effective
+				<code>configuration</code>
+				which will be used by the
+				<code>OpenDataLogicAgent</code>
+				PhytoJs internals.
+
+
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Example</div>
+
+
+				<pre
+					class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> <span class="hljs-string">'isomorphic-fetch'</span>;
+<span class="hljs-keyword">import</span> { Phyto } <span class="hljs-keyword">from</span> <span class="hljs-string">'@rondinif/phytojs'</span>;
+<span class="hljs-keyword">const</span> api = <span class="hljs-keyword">new</span> Phyto(fetch);
+<span class="hljs-built_in">console</span>.log(api.config().isUnderTest()); <span class="hljs-comment">// &gt; false</span>
+api.config().isUnderTest = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-literal">true</span>;
+<span class="hljs-built_in">console</span>.log(api.config().isUnderTest()); <span class="hljs-comment">// &gt; true</span></pre>
+
+
+
+
+
+
+
+
+			</section>
+
+
+
+
+			<section class='p2 mb2 clearfix bg-white minishadow'>
+
+
+				<div class='clearfix'>
+
+					<h3 class='fl m0' id='logger'>
+						logger
+					</h3>
+
+
+					<a class='fr fill-darken0 round round pad1x quiet h5'
+						href='https://github.com/rondinif/phytojs/blob/76c9c8fda90f5d72543d989cb516d441a0a78203/src/main.js#L184-L186'>
+						<span>src/main.js</span>
+					</a>
+
+				</div>
+
+
+				<div class="markdown-body">
+					<p>Allow access to the actual internal used <em>logger</em>
+						Use this <em>function</em> to get the <em>logger</em> object actually used internally by PhytoJS; the
+						<em>logger</em> object could be used to inspect the current <em>logger configuration</em> or for logging by
+						the same <em>logger</em> used by the PhytoJS's api instance.</p>
+
+				</div>
+
+				<div class='pre p1 fill-light mt0'>logger(): <a
+						href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Returns</div>
+				<code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+				the effective
+				<code>logger</code>
+				which will be used by the
+				<code>OpenDataLogicAgent</code>
+				PhytoJs internals.
+
+
+
+
+
+
+
+
+				<div class='py1 quiet mt1 prose-big'>Example</div>
+
+
+				<pre
+					class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> <span class="hljs-string">'isomorphic-fetch'</span>;
+<span class="hljs-keyword">import</span> { Phyto } <span class="hljs-keyword">from</span> <span class="hljs-string">'@rondinif/phytojs'</span>;
+<span class="hljs-keyword">const</span> api = <span class="hljs-keyword">new</span> Phyto(fetch);
+api.logger()._config.isLogSilent();
+<span class="hljs-comment">//	true</span>
+api.logger()._config.isLogVerbose();
+<span class="hljs-comment">//	false</span>
+
+<span class="hljs-comment">// live change logger configuration settings</span>
+api.logger()._config.isLogSilent = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-literal">false</span>;
+api.logger()._config.isLogSilent();
+<span class="hljs-comment">// false</span>
+api.logger().info((<span class="hljs-string">'this log information is written by the actual logger used by the API instance of PhytoJS'</span>);
+<span class="hljs-comment">// this log information is written by the actual logger used by the API instance of PhytoJS</span></pre>
+
+
+
+
+
+
+
+
+			</section>
+
+
+
+		</main>
+
+		<footer class='page__footer' role='contentinfo'>
+			<div class='inner'>
+				<img src='assets/images/phytojs-logo.png' alt='PhytoJS logo symbol'>
+			</div>
+		</footer>
+	</div>
+
+	<script src='assets/anchor.js'></script>
+	<script src='assets/site.js'></script>
+	<script src='assets/nav.js'></script>
 </body>
 
 </html>
