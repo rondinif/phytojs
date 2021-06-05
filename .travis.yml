@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - 12
   - 11
-  - node
+#  - node
 
 env:
   - IS_UNDER_TEST=true IS_LOG_SILENT=true IS_LOG_VERBOSE=false
