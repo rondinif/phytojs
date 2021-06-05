@@ -1,4 +1,4 @@
-import { Log } from '../esm/log';
+import { Log } from './log.js';
 
 // DIP: export Higher-order function factories : each of them returns a function as its result.
 // Higher-order function: returns a function as its result.

@@ -3,7 +3,7 @@ import test from 'tape';
 import fetch from 'isomorphic-fetch';
 import logger from 'roarr';
 // ? const log = logger.default;
-import {Log} from '../../esm/log';
+import {Log} from '../../esm/log.js';
 import {config} from '../../esm/config';
 import {logconfig} from '../../esm/logconfig';
 

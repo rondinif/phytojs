@@ -49,7 +49,7 @@ npm run clean:prepare:cover
 ``` bash
 npm --ignore-scripts=false run clean 
 npm --ignore-scripts=false run prepare 
-npm --ignore-scripts=false run cover
+npm --es-module-specifier-resolution=node --ignore-scripts=false run cover
 npm --ignore-scripts=false run test 
 ```
 
